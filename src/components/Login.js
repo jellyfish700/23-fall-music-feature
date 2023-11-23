@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = ({ onLoginSuccess }) => {
+const Login = () => {
   const handleLogin = () => {
 
     const authUrl = 'https://accounts.spotify.com/authorize';

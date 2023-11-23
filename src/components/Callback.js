@@ -1,17 +1,17 @@
+// /*global navigate*/
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Callback = ({ onLoginSuccess }) => {
+
+const Callback = ({ sendData }) => {
   const location = useLocation();
 
   useEffect(() => {
     const handleCallback = async () => {
-      // コールバック時にはlocation.searchを使用してクエリパラメータを取得
       const params = new URLSearchParams(location.search);
       const code = params.get('code');
 
-      // アクセストークンを取得するためのリクエストを作成
       const tokenRequest = new URLSearchParams({
         code: code,
         redirect_uri: 'http://localhost:3000/callback',
@@ -22,7 +22,7 @@ const Callback = ({ onLoginSuccess }) => {
 
         // Output the received code to the console for verification
         // console.log('Received authorization code:', code);
-        // console.log('Token request:', tokenRequest.toString());
+        //console.log('Token request:', tokenRequest.toString());
 
       try {
         // アクセストークンを取得するリクエスト
@@ -35,18 +35,32 @@ const Callback = ({ onLoginSuccess }) => {
                   },
             });
         // 取得したアクセストークンを親コンポーネントに渡す
-        onLoginSuccess(response.data.access_token);
+        sendData(response.data.access_token);
+
       } catch (error) {
         console.error('Error fetching access token:', error.message);
-        console.error('Response data:', error.response.data); // レスポンスデータもログに出力
-  // エラーの場合の処理を追加
+        console.error('Response data:', error.response.data);
       }
     };
 
     handleCallback();
-  }, [location, onLoginSuccess]);
+  }, [location, sendData]);
 
-  return <div>Logging in...</div>;
+  const url = () => {
+      //const data = 'Hello from child!';
+      const page = 'http://localhost:3000/page';
+      window.location.href = `${page}`;
+    
+  };
+
+  return (
+    <div>
+      <div>Logging in...</div>
+      <button onClick={url}>page</button>
+    </div>
+  );
 };
 
 export default Callback;
+
+

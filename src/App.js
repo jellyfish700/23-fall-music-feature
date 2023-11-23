@@ -1,39 +1,56 @@
-// src/App.js
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+
 import Login from './components/Login';
 import Callback from './components/Callback';
 import UserProfile from './components/UserProfile';
 
-const App = () => {
+const Call = () => {
   const [accessToken, setAccessToken] = useState(null);
-
-  const handleLoginSuccess = (token) => {
+  const getAccessToken = (token) => {
     setAccessToken(token);
   };
+  useEffect(() => {
+    console.log('Component mounted');
+    // ここに初期化のための処理を追加する場合があります
+  }, []); // 空の依存配列でマウント時のみ実行
+  
+  useEffect(() => {
+    console.log('AccessToken updated:', accessToken);
+  }, [accessToken]); // accessToken が変更されたときのみ実行
+  return(
+    <div>
+      <h1>アクセストークン{accessToken}</h1>
+      <Callback sendData={getAccessToken} />
+    </div>
+  )
+}
 
+const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
           <Route
             path="/"
-            element={
-              !accessToken ? (
-                <Login onLoginSuccess={handleLoginSuccess} />
-              ) : (
-                <div id="loggedin">
-                  <UserProfile accessToken={accessToken} />
-                </div>
-              )
-            }
+            element={<Login/>}
           />
-          <Route path="/callback" element={<Callback onLoginSuccess={handleLoginSuccess} />} />
+          <Route 
+            path="/callback" 
+            element={
+              <Call />
+          } />
+          <Route 
+            path="/page"
+            element={
+            <div>
+              <h1>アクセストークン</h1>
+              {/* <UserProfile accessToken={accessToken} /> */}
+            </div>} />
         </Routes>
-
-        <UserProfile accessToken={accessToken} />
       </div>
     </Router>
+
   );
 };
 
