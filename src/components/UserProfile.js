@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
 
-const UserProfile = () => {
+const UserProfile = ( ) => {
 const accessToken = useParams().id;
 console.log(accessToken)
   const [userData, setUserData] = useState(null);
@@ -29,6 +29,10 @@ console.log(accessToken)
 
   return (
     <div>
+      <h2>User Profile</h2>
+      <p>Received from Parent: {accessToken}</p>
+
+
       {userData ? (
         <div>
           <p>Name: {userData.display_name}</p>

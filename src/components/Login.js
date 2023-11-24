@@ -8,7 +8,9 @@ const Login = () => {
     const redirectUri = 'http://localhost:3000/callback';
 
     const state = Math.random().toString(36).substring(7);
-    const scope = 'user-read-private user-read-email';
+    //取得した以上方が増えたときはhttps://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks　のAuthorization scopesの部分を追加する
+    const scope = 'user-read-private user-read-email user-top-read';
+    
 
     window.location.href = `${authUrl}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&state=${state}`;
   };

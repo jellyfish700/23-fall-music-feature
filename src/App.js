@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 import Login from './components/Login';
 import Callback from './components/Callback';
 import UserProfile from './components/UserProfile';
+import Toptrack from './components/Toptrack';
 
 const App = () => {
   // const [accessToken, setAccessToken] = useState(null);
@@ -23,7 +24,7 @@ const App = () => {
             element={<Callback  />} />
           <Route 
             path="/page/:id"
-            element={<UserProfile />} />
+            element={<Toptrack />} />
         </Routes>
       </div>
     </Router>
