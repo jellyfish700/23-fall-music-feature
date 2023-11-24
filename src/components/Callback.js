@@ -37,6 +37,9 @@ const Callback = ({ sendData }) => {
         // 取得したアクセストークンを親コンポーネントに渡す
         sendData(response.data.access_token);
 
+        const page = 'http://localhost:3000/page/'+response.data.access_token;
+        window.location.href = `${page}`;
+
       } catch (error) {
         console.error('Error fetching access token:', error.message);
         console.error('Response data:', error.response.data);
@@ -48,7 +51,7 @@ const Callback = ({ sendData }) => {
 
   const url = () => {
       //const data = 'Hello from child!';
-      const page = 'http://localhost:3000/page';
+      const page = 'http://localhost:3000/page/11';
       window.location.href = `${page}`;
     
   };

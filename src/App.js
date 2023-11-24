@@ -41,10 +41,10 @@ const App = () => {
               <Call />
           } />
           <Route 
-            path="/page"
+            path="/page/:id"
             element={
             <div>
-              <h1>アクセストークン</h1>
+              <UserProfile />
               {/* <UserProfile accessToken={accessToken} /> */}
             </div>} />
         </Routes>
