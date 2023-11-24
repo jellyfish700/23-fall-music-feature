@@ -5,28 +5,11 @@ import Login from './components/Login';
 import Callback from './components/Callback';
 import UserProfile from './components/UserProfile';
 
-const Call = () => {
-  const [accessToken, setAccessToken] = useState(null);
-  const getAccessToken = (token) => {
-    setAccessToken(token);
-  };
-  useEffect(() => {
-    console.log('Component mounted');
-    // ここに初期化のための処理を追加する場合があります
-  }, []); // 空の依存配列でマウント時のみ実行
-  
-  useEffect(() => {
-    console.log('AccessToken updated:', accessToken);
-  }, [accessToken]); // accessToken が変更されたときのみ実行
-  return(
-    <div>
-      <h1>アクセストークン{accessToken}</h1>
-      <Callback sendData={getAccessToken} />
-    </div>
-  )
-}
-
 const App = () => {
+  // const [accessToken, setAccessToken] = useState(null);
+  // const getAccessToken = (token) => {
+  //   setAccessToken(token);
+  // };
   return (
     <Router>
       <div className="container">
@@ -37,20 +20,13 @@ const App = () => {
           />
           <Route 
             path="/callback" 
-            element={
-              <Call />
-          } />
+            element={<Callback  />} />
           <Route 
             path="/page/:id"
-            element={
-            <div>
-              <UserProfile />
-              {/* <UserProfile accessToken={accessToken} /> */}
-            </div>} />
+            element={<UserProfile />} />
         </Routes>
       </div>
     </Router>
-
   );
 };
 

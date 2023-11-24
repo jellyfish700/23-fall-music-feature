@@ -1,10 +1,9 @@
 // /*global navigate*/
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-
-const Callback = ({ sendData }) => {
+const Callback = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -19,11 +18,6 @@ const Callback = ({ sendData }) => {
         client_secret: 'e3928d23dbd144bfa12cbcfd26a6f6c2',
         grant_type: 'authorization_code',
       });
-
-        // Output the received code to the console for verification
-        // console.log('Received authorization code:', code);
-        //console.log('Token request:', tokenRequest.toString());
-
       try {
         // アクセストークンを取得するリクエスト
         const response = await axios.post(
@@ -35,7 +29,7 @@ const Callback = ({ sendData }) => {
                   },
             });
         // 取得したアクセストークンを親コンポーネントに渡す
-        sendData(response.data.access_token);
+        // sendData(response.data.access_token);
 
         const page = 'http://localhost:3000/page/'+response.data.access_token;
         window.location.href = `${page}`;
@@ -47,20 +41,10 @@ const Callback = ({ sendData }) => {
     };
 
     handleCallback();
-  }, [location, sendData]);
-
-  const url = () => {
-      //const data = 'Hello from child!';
-      const page = 'http://localhost:3000/page/11';
-      window.location.href = `${page}`;
-    
-  };
+  }, [location]);
 
   return (
-    <div>
       <div>Logging in...</div>
-      <button onClick={url}>page</button>
-    </div>
   );
 };
 
