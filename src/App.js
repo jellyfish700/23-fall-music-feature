@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Callback from './components/Callback';
 import UserProfile from './components/UserProfile';
 import Toptrack from './components/Toptrack';
+import Playlist from './components/Playlist';
 
 const App = () => {
   // const [accessToken, setAccessToken] = useState(null);
@@ -24,7 +25,7 @@ const App = () => {
             element={<Callback  />} />
           <Route 
             path="/page/:id"
-            element={<Toptrack />} />
+            element={<Playlist />} />
         </Routes>
       </div>
     </Router>

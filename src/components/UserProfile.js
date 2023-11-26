@@ -30,9 +30,6 @@ console.log(accessToken)
   return (
     <div>
       <h2>User Profile</h2>
-      <p>Received from Parent: {accessToken}</p>
-
-
       {userData ? (
         <div>
           <p>Name: {userData.display_name}</p>
