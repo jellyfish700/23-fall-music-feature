@@ -37,7 +37,7 @@ const UserPlaylists = () => {
           <ul>
             {userPlaylists.map(({ id, name }) => (
               <li key={id}>
-                {name} (ID: {id})
+                {name}  :  (ID: {id})
               </li>
             ))}
           </ul>
