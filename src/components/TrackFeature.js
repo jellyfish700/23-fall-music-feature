@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const TrackTempo = ({ trackTempo }) => {
+const TrackFeature = ({ trackID }) => {
   const accessToken = useParams().id;
-  const trackId = trackTempo;
+  const trackId = trackID;
   const [trackInfo, setTrackInfo] = useState(null);
   const [features, setFeatures] = useState(null);
 
@@ -71,4 +71,4 @@ const TrackTempo = ({ trackTempo }) => {
   );
 };
 
-export default TrackTempo;
+export default TrackFeature;
