@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const UserPlaylists = () => {
+const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
   const accessToken = useParams().id;
   const [userPlaylists, setUserPlaylists] = useState([]);
+  const [tempoInput, setTempoInput] = useState('');
 
   useEffect(() => {
     async function fetchWebApi(endpoint, method, body) {
@@ -30,30 +31,36 @@ const UserPlaylists = () => {
   }, [accessToken]);
 
   function selectPlaylist(playlistId) {
-    console.log(`Selected Playlist ID: ${playlistId}`);
+    onSelectPlaylistID(playlistId);
+    onSelectTempo(tempoInput);
   }
 
   return (
     <div>
       <div>
-        <h2>User Playlists</h2>
+        <h2>SelectPlaylist</h2>
+        <input
+          type="text"
+          value={tempoInput}
+          onChange={(e) => setTempoInput(e.target.value)}
+        />
+        <p>Entered Tempo: {tempoInput}</p>
         {userPlaylists.length > 0 ? (
           <ul>
-          {userPlaylists.map(({ id, name, images }) => (
-            <li key={id}>
-              <p>{name} (ID: {id})</p>
-              {images.length > 0 && (
-                <img
-                  src={images[0].url}
-                  alt={`Playlist: ${name}`}
-                  style={{ width: '100px', height: '100px' }}
-                />
-              )}
-              <button onClick={() => selectPlaylist(id)}>Select</button>
-            </li>
-            
-          ))}
-        </ul>
+            {userPlaylists.map(({ id, name, images }) => (
+              <li key={id}>
+                <p>{name} (ID: {id})</p>
+                {images.length > 0 && (
+                  <img
+                    src={images[0].url}
+                    alt={`Playlist: ${name}`}
+                    style={{ width: '100px', height: '100px' }}
+                  />
+                )}
+                <button onClick={() => selectPlaylist(id)}>Select</button>
+              </li>
+            ))}
+          </ul>
         ) : (
           <p>Loading user playlists...</p>
         )}
@@ -62,4 +69,4 @@ const UserPlaylists = () => {
   );
 };
 
-export default UserPlaylists;
+export default SelectPlaylist;

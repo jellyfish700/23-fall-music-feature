@@ -3,16 +3,13 @@ import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 
 import Login from './components/Login';
 import Callback from './components/Callback';
-import UserProfile from './components/UserProfile';
-import Toptrack from './components/Toptrack';
-import UserPlaylist from './components/UserPlaylist';
-import PlaylistTrack from './components/PlaylistTrack';
+import Main from './components/Main';
+
 
 const App = () => {
   // const [accessToken, setAccessToken] = useState(null);
   // const getAccessToken = (token) => {
   //   setAccessToken(token);
-  // };
   return (
     <Router>
       <div className="container">
@@ -28,8 +25,7 @@ const App = () => {
             path="/page/:id"
             element={
             <div>
-              <UserPlaylist />
-              <PlaylistTrack />
+              <Main />
             </div>
 
             } />
