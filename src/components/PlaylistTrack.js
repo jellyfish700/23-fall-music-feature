@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const PlaylistTracks = () => {
+const PlaylistTracks = ({ selectedPlaylistId }) => {
   const accessToken = useParams().id;
-  const playlistId  = "1Pi4iHvT60RPDSCaegIo0o";
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   useEffect(() => {
+    // 選択されたプレイリストのIDが変更されるたびに実行
     async function fetchPlaylistTracks() {
       try {
-        // Spotify Web APIのプレイリストのトラック情報取得エンドポイント
-        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${selectedPlaylistId}/tracks`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`, // ここにSpotifyのアクセストークンを設定
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
@@ -28,11 +27,11 @@ const PlaylistTracks = () => {
     }
 
     fetchPlaylistTracks();
-  }, [playlistId]);
+  }, [selectedPlaylistId, accessToken]);
 
   return (
     <div>
-      <h2>Playlist Tracks for Playlist ID: {playlistId}</h2>
+      <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2>
       {playlistTracks.length > 0 ? (
         <ul>
           {playlistTracks.map(({ track }) => (

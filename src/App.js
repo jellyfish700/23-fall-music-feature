@@ -5,9 +5,11 @@ import Login from './components/Login';
 import Callback from './components/Callback';
 import UserProfile from './components/UserProfile';
 import Toptrack from './components/Toptrack';
-import UserPlaylist from './components/UserPlaylist';
+import SelectPlaylist from './components/SelectPlaylist';
 import PlaylistTrack from './components/PlaylistTrack';
 import TrackTempo from './components/TrackTempo';
+
+import Main from './components/Main';
 
 
 const App = () => {
@@ -30,9 +32,7 @@ const App = () => {
             path="/page/:id"
             element={
             <div>
-              {/* <UserPlaylist /> */}
-              <PlaylistTrack />
-              <TrackTempo />
+              <Main />
             </div>
 
             } />
