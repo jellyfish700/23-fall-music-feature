@@ -7,7 +7,6 @@ const UserPlaylists = () => {
 
   useEffect(() => {
     async function fetchWebApi(endpoint, method, body) {
-      console.log(accessToken);
       const res = await fetch(`https://api.spotify.com/${endpoint}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -19,10 +18,7 @@ const UserPlaylists = () => {
     }
 
     async function getUserPlaylists() {
-      return (await fetchWebApi(
-        'v1/me/playlists',
-        'GET'
-      )).items;
+      return (await fetchWebApi('v1/me/playlists', 'GET')).items;
     }
 
     async function fetchUserPlaylists() {
@@ -40,7 +36,9 @@ const UserPlaylists = () => {
         {userPlaylists.length > 0 ? (
           <ul>
             {userPlaylists.map(({ id, name }) => (
-              <li key={id}>{name}</li>
+              <li key={id}>
+                {name} (ID: {id})
+              </li>
             ))}
           </ul>
         ) : (
