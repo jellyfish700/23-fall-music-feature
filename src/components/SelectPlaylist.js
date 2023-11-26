@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const SelectPlaylist = ({ onSelectPlaylistID }) => {
+const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
   const accessToken = useParams().id;
   const [userPlaylists, setUserPlaylists] = useState([]);
+  const [tempoInput, setTempoInput] = useState('');
 
   useEffect(() => {
     async function fetchWebApi(endpoint, method, body) {
@@ -31,12 +32,19 @@ const SelectPlaylist = ({ onSelectPlaylistID }) => {
 
   function selectPlaylist(playlistId) {
     onSelectPlaylistID(playlistId);
+    onSelectTempo(tempoInput);
   }
 
   return (
     <div>
       <div>
         <h2>SelectPlaylist</h2>
+        <input
+          type="text"
+          value={tempoInput}
+          onChange={(e) => setTempoInput(e.target.value)}
+        />
+        <p>Entered Tempo: {tempoInput}</p>
         {userPlaylists.length > 0 ? (
           <ul>
             {userPlaylists.map(({ id, name, images }) => (

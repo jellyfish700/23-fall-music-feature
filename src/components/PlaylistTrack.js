@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const PlaylistTracks = ({ selectedPlaylistId }) => {
+const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -32,6 +32,7 @@ const PlaylistTracks = ({ selectedPlaylistId }) => {
   return (
     <div>
       <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2>
+      <h2>Tempo: {selectedTempo}</h2>
       {playlistTracks.length > 0 ? (
         <ul>
           {playlistTracks.map(({ track }) => (

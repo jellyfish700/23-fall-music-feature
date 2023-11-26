@@ -6,6 +6,7 @@ import PlaylistTrack from './PlaylistTrack';
 const Main = () => {
   const [selectPlaylistPage, setSelect] = useState(true);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
+  const [selectedTempo, setSelectedTempo] = useState(null);
 
   const serchTrack = () => {
     setSelect((selectComponent) => !selectComponent);
@@ -15,13 +16,28 @@ const Main = () => {
     setSelectedPlaylistId(playlistId);
   };
 
+  const handleSelectTempo = (tempo) => {
+    setSelectedTempo(tempo);
+  };
+
   return (
     <div>
-      <button onClick={serchTrack}>serch</button>
       {selectPlaylistPage ? (
-        <SelectPlaylist onSelectPlaylistID={handleSelectPlaylist} />
+        <div>
+            <button onClick={serchTrack}>serch</button>
+            <SelectPlaylist 
+                onSelectPlaylistID={handleSelectPlaylist}
+                onSelectTempo={handleSelectTempo}
+            />
+        </div>
       ) : (
-        <PlaylistTrack selectedPlaylistId={selectedPlaylistId} />
+        <div>
+            <button onClick={serchTrack}>back</button>
+            <PlaylistTrack 
+                selectedPlaylistId={selectedPlaylistId}
+                selectedTempo={selectedTempo}
+            />
+        </div>
       )}
     </div>
   );
