@@ -7,6 +7,8 @@ import UserProfile from './components/UserProfile';
 import Toptrack from './components/Toptrack';
 import UserPlaylist from './components/UserPlaylist';
 import PlaylistTrack from './components/PlaylistTrack';
+import TrackTempo from './components/TrackTempo';
+
 
 const App = () => {
   // const [accessToken, setAccessToken] = useState(null);
@@ -28,8 +30,9 @@ const App = () => {
             path="/page/:id"
             element={
             <div>
-              <UserPlaylist />
+              {/* <UserPlaylist /> */}
               <PlaylistTrack />
+              <TrackTempo />
             </div>
 
             } />
