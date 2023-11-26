@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import SelectPlaylist from './SelectPlaylist';
-import PlaylistTrack from './PlaylistTrack';
+import SelectPlaylist from './MainPages/SelectPlaylist';
+import PlaylistTrack from './MainPages/PlaylistTrack';
 
 const Main = () => {
   const [selectPlaylistPage, setSelect] = useState(true);

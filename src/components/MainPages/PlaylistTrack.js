@@ -32,8 +32,8 @@ const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
 
   return (
     <div>
-      {/* <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2>
-      <h2>Tempo: {selectedTempo}</h2> */}
+      {/* <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2> */}
+      <h2>Tempo: {selectedTempo}</h2>
       {playlistTracks.length > 0 ? (
         <ul>
           {playlistTracks.map(({ track }) => (
