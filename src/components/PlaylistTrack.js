@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import TrackTempo from './TrackTempo';
 
 const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
   const accessToken = useParams().id;
@@ -31,13 +32,14 @@ const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
 
   return (
     <div>
-      <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2>
-      <h2>Tempo: {selectedTempo}</h2>
+      {/* <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2>
+      <h2>Tempo: {selectedTempo}</h2> */}
       {playlistTracks.length > 0 ? (
         <ul>
           {playlistTracks.map(({ track }) => (
             <li key={track.id}>
               {track.name} by {track.artists.map((artist) => artist.name).join(', ')}
+              <TrackTempo trackTempo={track.id} />
             </li>
           ))}
         </ul>

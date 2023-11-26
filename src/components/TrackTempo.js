@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const FeaturesDisplay = () => {
+const TrackTempo = ({ trackTempo }) => {
   const accessToken = useParams().id;
-  const trackId = '4yh4QM2HRXYg7hevgirrAK';
+  const trackId = trackTempo;
+  const [trackInfo, setTrackInfo] = useState(null);
   const [features, setFeatures] = useState(null);
 
   useEffect(() => {
+    async function fetchTrackInfo() {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setTrackInfo(data);
+      } catch (error) {
+        console.error('Error fetching track info:', error.message);
+      }
+    }
+
     async function fetchFeatures() {
       try {
         const response = await fetch(`https://api.spotify.com/v1/audio-features/${trackId}`, {
@@ -26,26 +46,24 @@ const FeaturesDisplay = () => {
       }
     }
 
+    fetchTrackInfo();
     fetchFeatures();
   }, [accessToken, trackId]);
 
   return (
     <div>
-      <h2>Features Display for Track ID: {trackId}</h2>
-      {features !== null ? (
-        <ul>
-          <li>Danceability: {features.danceability}</li>
-          <li>Energy: {features.energy}</li>
-          <li>Key: {features.key}</li>
-          <li>Loudness: {features.loudness}</li>
-          <li>Mode: {features.mode}</li>
-          <li>Speechiness: {features.speechiness}</li>
-          <li>Acousticness: {features.acousticness}</li>
-          <li>Instrumentalness: {features.instrumentalness}</li>
-          <li>Liveness: {features.liveness}</li>
-          <li>Valence: {features.valence}</li>
-          <li>Tempo: {features.tempo}</li>
-        </ul>
+      {/* <h2>Features Display for Track ID: {trackId}</h2> */}
+      {trackInfo !== null && features !== null ? (
+        <div>
+          {/* <p>Artists: {trackInfo.artists.map(artist => artist.name).join(', ')}</p>
+          <p>Track Name: {trackInfo.name}</p> */}
+          <ul>
+            <li>Danceability(ダンス): {features.danceability}</li>
+            <li>Energy(エネルギッシュ): {features.energy}</li>
+            <li>Valence(ポジティブ): {features.valence}</li>
+            <li>Tempo(テンポ): {features.tempo}</li>
+          </ul>
+        </div>
       ) : (
         <p>Loading features...</p>
       )}
@@ -53,4 +71,4 @@ const FeaturesDisplay = () => {
   );
 };
 
-export default FeaturesDisplay;
+export default TrackTempo;

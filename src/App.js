@@ -16,7 +16,6 @@ const App = () => {
   // const [accessToken, setAccessToken] = useState(null);
   // const getAccessToken = (token) => {
   //   setAccessToken(token);
-  // };
   return (
     <Router>
       <div className="container">
@@ -32,6 +31,9 @@ const App = () => {
             path="/page/:id"
             element={
             <div>
+              {/* <TrackTempo trackTempo={"0qcQXICGggkNm0xI1x99Yr"} />
+              <TrackTempo trackTempo={"03KfnHmik5W7sBlxDnsI7X"} />
+              <TrackTempo trackTempo={"2QwatVtCNAW75YLarmoYbe"} /> */}
               <Main />
             </div>
 
