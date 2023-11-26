@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Toptrack = () => {
+const UserPlaylists = () => {
   const accessToken = useParams().id;
-  const [topTracks, setTopTracks] = useState([]);
+  const [userPlaylists, setUserPlaylists] = useState([]);
 
   useEffect(() => {
     async function fetchWebApi(endpoint, method, body) {
@@ -18,39 +18,37 @@ const Toptrack = () => {
       return await res.json();
     }
 
-    async function getTopTracks() {
+    async function getUserPlaylists() {
       return (await fetchWebApi(
-        'v1/me/top/tracks?time_range=long_term&limit=5',
+        'v1/me/playlists',
         'GET'
       )).items;
     }
 
-    async function someFunction() {
-      const tracks = await getTopTracks();
-      setTopTracks(tracks);
+    async function fetchUserPlaylists() {
+      const playlists = await getUserPlaylists();
+      setUserPlaylists(playlists);
     }
 
-    someFunction();
+    fetchUserPlaylists();
   }, [accessToken]);
 
   return (
     <div>
       <div>
-        <h2>Top Tracks</h2>
-        {topTracks.length > 0 ? (
+        <h2>User Playlists</h2>
+        {userPlaylists.length > 0 ? (
           <ul>
-            {topTracks.map(({ name, artists }) => (
-              <li key={name}>
-                {name} by {artists.map((artist) => artist.name).join(', ')}
-              </li>
+            {userPlaylists.map(({ id, name }) => (
+              <li key={id}>{name}</li>
             ))}
           </ul>
         ) : (
-          <p>Loading top tracks...</p>
+          <p>Loading user playlists...</p>
         )}
       </div>
     </div>
   );
 };
 
-export default Toptrack;
+export default UserPlaylists;
