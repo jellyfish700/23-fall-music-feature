@@ -29,18 +29,31 @@ const UserPlaylists = () => {
     fetchUserPlaylists();
   }, [accessToken]);
 
+  function selectPlaylist(playlistId) {
+    console.log(`Selected Playlist ID: ${playlistId}`);
+  }
+
   return (
     <div>
       <div>
         <h2>User Playlists</h2>
         {userPlaylists.length > 0 ? (
           <ul>
-            {userPlaylists.map(({ id, name }) => (
-              <li key={id}>
-                {name}  :  (ID: {id})
-              </li>
-            ))}
-          </ul>
+          {userPlaylists.map(({ id, name, images }) => (
+            <li key={id}>
+              <p>{name} (ID: {id})</p>
+              {images.length > 0 && (
+                <img
+                  src={images[0].url}
+                  alt={`Playlist: ${name}`}
+                  style={{ width: '100px', height: '100px' }}
+                />
+              )}
+              <button onClick={() => selectPlaylist(id)}>Select</button>
+            </li>
+            
+          ))}
+        </ul>
         ) : (
           <p>Loading user playlists...</p>
         )}
