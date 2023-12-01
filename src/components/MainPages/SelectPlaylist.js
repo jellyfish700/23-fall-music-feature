@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
+const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo,onSelectEnergy,onSelectDance, onClick}) => {
   const accessToken = useParams().id;
   const [userPlaylists, setUserPlaylists] = useState([]);
   const [tempoValue, setTempoValue] = useState(0);
@@ -48,21 +48,29 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
     onSelectPlaylistID(playlistId);
   }
 
+  function serchTrack() {
+    onClick();
+    onSelectTempo(tempoValue);
+    onSelectEnergy(energyValue);
+    onSelectDance(danceValue);
+  }
+
   return (
     <div>
       <div>
+      <button onClick={serchTrack}>serch</button>
         <h2>SelectPlaylist</h2>
 
-        {/* Danceability */}
-        <p>Danceability : {danceValue}</p>
+        {/* Tempo */}
+        <p>Tempo : {tempoValue}</p>
         <input 
         type="range"
         class="form-range"
-        id="danceSelect"
-        // min={60}
-        // max={180}
-        value={danceValue}
-        onChange={handleDanceChange}></input>
+        id="tempoSelect"
+        min={60}
+        max={180}
+        value={tempoValue}
+        onChange={handleTempoChange}></input>
 
         {/* Energy */}
         <p>Energy : {energyValue}</p>
@@ -75,16 +83,16 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
         value={energyValue}
         onChange={handleEnergyChange}></input>
 
-        {/* Tempo */}
-        <p>Tempo : {tempoValue}</p>
+        {/* Danceability */}
+        <p>Danceability : {danceValue}</p>
         <input 
         type="range"
         class="form-range"
-        id="tempoSelect"
-        min={60}
-        max={180}
-        value={tempoValue}
-        onChange={handleTempoChange}></input>
+        id="danceSelect"
+        // min={60}
+        // max={180}
+        value={danceValue}
+        onChange={handleDanceChange}></input>
         
         {userPlaylists.length > 0 ? (
           <ul>

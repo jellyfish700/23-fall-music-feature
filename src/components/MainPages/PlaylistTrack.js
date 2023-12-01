@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 
-const PlaylistTracks = ({ selectedPlaylistId }) => {
+const PlaylistTracks = ({ selectedPlaylistId, selectedTempo, selectedEnergy, selectedDance, onClick }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -30,8 +30,16 @@ const PlaylistTracks = ({ selectedPlaylistId }) => {
     fetchPlaylistTracks();
   }, [selectedPlaylistId, accessToken]);
 
+  function serchTrack() {
+    onClick();
+  }
+
   return (
     <div>
+      <button onClick={serchTrack}>serch</button>
+      <p>tempo:{selectedTempo}</p>
+      <p>energy:{selectedEnergy}</p>
+      <p>dance:{selectedDance}</p>
       {/* <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2> */}
       {playlistTracks.length > 0 ? (
         <ul>
