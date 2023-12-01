@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 
-const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
+const PlaylistTracks = ({ selectedPlaylistId }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -33,7 +33,6 @@ const PlaylistTracks = ({ selectedPlaylistId, selectedTempo }) => {
   return (
     <div>
       {/* <h2>Playlist Tracks for Playlist ID: {selectedPlaylistId}</h2> */}
-      <h2>Tempo: {selectedTempo}</h2>
       {playlistTracks.length > 0 ? (
         <ul>
           {playlistTracks.map(({ track }) => (

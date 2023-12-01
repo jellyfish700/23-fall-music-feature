@@ -4,7 +4,21 @@ import { useParams } from 'react-router-dom';
 const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
   const accessToken = useParams().id;
   const [userPlaylists, setUserPlaylists] = useState([]);
-  const [tempoInput, setTempoInput] = useState('');
+  const [tempoValue, setTempoValue] = useState(0);
+  const [energyValue, setEnergyValue] = useState(0);
+  const [danceValue, setDanceValue] = useState(0);
+
+  const handleTempoChange = (e) => {
+    setTempoValue(e.target.value);
+  };
+
+  const handleEnergyChange = (e) => {
+    setEnergyValue(e.target.value);
+  };
+
+  const handleDanceChange = (e) => {
+    setDanceValue(e.target.value);
+  };
 
   useEffect(() => {
     async function fetchWebApi(endpoint, method, body) {
@@ -32,19 +46,46 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo}) => {
 
   function selectPlaylist(playlistId) {
     onSelectPlaylistID(playlistId);
-    onSelectTempo(tempoInput);
   }
 
   return (
     <div>
       <div>
         <h2>SelectPlaylist</h2>
-        <input
-          type="text"
-          value={tempoInput}
-          onChange={(e) => setTempoInput(e.target.value)}
-        />
-        <p>Entered Tempo: {tempoInput}</p>
+
+        {/* Danceability */}
+        <p>Danceability : {danceValue}</p>
+        <input 
+        type="range"
+        class="form-range"
+        id="danceSelect"
+        // min={60}
+        // max={180}
+        value={danceValue}
+        onChange={handleDanceChange}></input>
+
+        {/* Energy */}
+        <p>Energy : {energyValue}</p>
+        <input 
+        type="range"
+        class="form-range"
+        id="energySelect"
+        // min={60}
+        // max={180}
+        value={energyValue}
+        onChange={handleEnergyChange}></input>
+
+        {/* Tempo */}
+        <p>Tempo : {tempoValue}</p>
+        <input 
+        type="range"
+        class="form-range"
+        id="tempoSelect"
+        min={60}
+        max={180}
+        value={tempoValue}
+        onChange={handleTempoChange}></input>
+        
         {userPlaylists.length > 0 ? (
           <ul>
             {userPlaylists.map(({ id, name, images }) => (

@@ -60,7 +60,6 @@ const TrackFeature = ({ trackID }) => {
           <ul>
             <li>Danceability(ダンス): {features.danceability}</li>
             <li>Energy(エネルギッシュ): {features.energy}</li>
-            <li>Valence(ポジティブ): {features.valence}</li>
             <li>Tempo(テンポ): {features.tempo}</li>
           </ul>
         </div>
