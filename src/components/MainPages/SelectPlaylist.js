@@ -62,7 +62,7 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo,onSelectEnergy,onSel
         <h2>SelectPlaylist</h2>
 
         {/* Tempo */}
-        <p>Tempo : {tempoValue}</p>
+        {/* <p>Tempo : {tempoValue}</p>
         <input 
         type="range"
         class="form-range"
@@ -72,7 +72,6 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo,onSelectEnergy,onSel
         value={tempoValue}
         onChange={handleTempoChange}></input>
 
-        {/* Energy */}
         <p>Energy : {energyValue}</p>
         <input 
         type="range"
@@ -83,7 +82,6 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo,onSelectEnergy,onSel
         value={energyValue}
         onChange={handleEnergyChange}></input>
 
-        {/* Danceability */}
         <p>Danceability : {danceValue}</p>
         <input 
         type="range"
@@ -92,7 +90,7 @@ const SelectPlaylist = ({ onSelectPlaylistID, onSelectTempo,onSelectEnergy,onSel
         // min={60}
         // max={180}
         value={danceValue}
-        onChange={handleDanceChange}></input>
+        onChange={handleDanceChange}></input> */}
         
         {userPlaylists.length > 0 ? (
           <ul>
