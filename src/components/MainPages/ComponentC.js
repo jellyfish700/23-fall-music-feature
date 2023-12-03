@@ -1,46 +1,69 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-
-
-const ComponentC = ({onClick, postSelectedTempo,postSelectedEnergy,postSelectedDance,postTempoList, postTracklist}) => {
+const ComponentC = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postTracklist }) => {
+    const accessToken = useParams().id;
+    const [trackTitle, setTrackTitle] = useState(null);
     
     useEffect(() => {
-        const closestIndex = postTempoList.reduce((closestIdx, currentValue, currentIndex) => {
-            const currentDiff = Math.abs(currentValue - postSelectedTempo);
-            const closestDiff = Math.abs(postTempoList[closestIdx] - postSelectedTempo);
-          
-            return currentDiff < closestDiff ? currentIndex : closestIdx;
-          }, 0);
+    let closestIndex = 0;
+    let closestDifference = Math.abs(postTempoList[0] - postSelectedTempo);
 
-        console.log(postTracklist[closestIndex])
-    
-      }, );
-      
-    function button(){
-        onClick("Playlist")
+        for (let i = 1; i < postTempoList.length; i++) {
+            const difference = Math.abs(postTempoList[i] - postSelectedTempo);
+        
+            if (difference < closestDifference) {
+                closestIndex = i;
+                closestDifference = difference;
+            }
+        }
+
+        async function fetchTrackTitle() {
+            try {
+                const response = await fetch(`https://api.spotify.com/v1/tracks/${postTracklist[closestIndex]}`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                setTrackTitle(data.name);
+            } catch (error) {
+                console.error('Error fetching playlist tracks:', error.message);
+            }
+        }
+
+        fetchTrackTitle();
+    }, [postSelectedTempo, postTempoList, postTracklist, accessToken]);
+
+    function button() {
+        onClick("Playlist");
     }
 
+    return (
+        <div>
+            {/* <p>list: {postTempoList}</p>
 
-  return (
-    <div>
-      <p>tempo:{postSelectedTempo}</p>
-      <p>energy:{postSelectedEnergy}</p>
-      <p>dance:{postSelectedDance}</p>
+            <p>
+                {postTempoList.map((tempo, index) => (
+                    <p key={index}>{tempo}</p>
+                ))}
+            </p> */}
 
-      <p>list:{postTempoList}</p>
+            <h1>選曲された曲</h1>
 
-      <p>
-        {postTempoList.map((tempo, index) => (
-          <p key={index}>{tempo}</p>
-        ))}
-      </p>
+            <h1>{trackTitle}</h1>
+            <p>tempo: {postSelectedTempo}</p>
+            <p>energy: {postSelectedEnergy}</p>
+            <p>dance: {postSelectedDance}</p>
 
-      <h1>選曲された曲
-      <button onClick={button}>戻る</button>
-      </h1>
-    </div>
-  );
+            <button onClick={button}>戻る</button>
+        </div>
+    );
 };
 
 export default ComponentC;
