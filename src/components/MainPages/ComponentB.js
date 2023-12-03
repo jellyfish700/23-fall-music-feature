@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 
-const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTrackList }) => {
+const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -11,6 +11,7 @@ const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelect
   const [danceValue, setDanceValue] = useState(0);
 
   const [tempoList, settempoList] = useState([])//selectTempoとの差を格納するリスト
+  const [trackList, settrackList] = useState([])//selectTempoとの差を格納するリスト
 
 
   const handleTempoChange = (e) => {
@@ -57,21 +58,17 @@ const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelect
     getSelectTempo(tempoValue);
     getSelectEnergy(energyValue);
     getSelectDance(danceValue);
-    getTrackList(tempoList)
-
-    // 配列内で一番小さい数値を取得
-    const minNumber = Math.min(...tempoList);
-
-    // 一番小さい数値のインデックスを取得
-    const minIndex = tempoList.indexOf(minNumber);
-
-    console.log("一番小さい数値:", minNumber);
-    console.log("一番小さい数値のインデックス:", minIndex);
+    getTempoList(tempoList);
+    getTrackList(trackList);
   }
 
 
   const addTempoList = (name) => {
-    settempoList(tempoList=>[...tempoList, Math.abs(name - tempoValue)])
+    settempoList(tempoList=>[...tempoList, name])
+  }
+
+  const addTrack = (name) => {
+    settrackList(trackList=>[...trackList, name])
   }
 
   return (
@@ -118,7 +115,8 @@ const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelect
               <div>
                 <h3>{track.name}</h3>
                 <p>By {track.artists.map((artist) => artist.name).join(', ')}</p>
-                <TrackFeature trackID={track.id} getTempo={addTempoList}/>
+                <p>{track.id}</p>
+                <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
                 {track.album.images.length > 0 && (
                   <img
                     src={track.album.images[0].url}

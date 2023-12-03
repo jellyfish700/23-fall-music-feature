@@ -99,8 +99,13 @@ const Main = () => {
 
   //Playlistの特徴量を格納した配列
   const [tempoList, setTempoList] = useState([]);
+  const [trackList, setTrackList] = useState([]);
+
   const handleSetTempoList = (list) => {
     setTempoList(list);
+  };
+  const handleSetTrackList = (list) => {
+    setTrackList(list);
   };
 
   return (
@@ -115,7 +120,8 @@ const Main = () => {
       getSelectTempo={handleSelectTempo}
       getSelectEnergy={handleSelectEnergy}
       getSelectDance={handleSelectDance}
-      getTrackList={handleSetTempoList}
+      getTempoList={handleSetTempoList}
+      getTrackList={handleSetTrackList}
 />}
       {activeComponent === 'Suggest' && <ComponentC 
       onClick={handleComponentChange}
@@ -124,7 +130,8 @@ const Main = () => {
       postSelectedEnergy={selectedEnergy}
       postSelectedDance={selectedDance}
 
-      postTrackList={tempoList}
+      postTempoList={tempoList}
+      postTracklist={trackList}
       
       />}
     </div>

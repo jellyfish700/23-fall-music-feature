@@ -3,8 +3,20 @@ import { useParams } from 'react-router-dom';
 
 
 
-const ComponentC = ({onClick, postSelectedTempo,postSelectedEnergy,postSelectedDance,postTrackList}) => {
+const ComponentC = ({onClick, postSelectedTempo,postSelectedEnergy,postSelectedDance,postTempoList, postTracklist}) => {
     
+    useEffect(() => {
+        const closestIndex = postTempoList.reduce((closestIdx, currentValue, currentIndex) => {
+            const currentDiff = Math.abs(currentValue - postSelectedTempo);
+            const closestDiff = Math.abs(postTempoList[closestIdx] - postSelectedTempo);
+          
+            return currentDiff < closestDiff ? currentIndex : closestIdx;
+          }, 0);
+
+        console.log(postTracklist[closestIndex])
+    
+      }, );
+      
     function button(){
         onClick("Playlist")
     }
@@ -16,10 +28,10 @@ const ComponentC = ({onClick, postSelectedTempo,postSelectedEnergy,postSelectedD
       <p>energy:{postSelectedEnergy}</p>
       <p>dance:{postSelectedDance}</p>
 
-      <p>list:{postTrackList}</p>
+      <p>list:{postTempoList}</p>
 
       <p>
-        {postTrackList.map((tempo, index) => (
+        {postTempoList.map((tempo, index) => (
           <p key={index}>{tempo}</p>
         ))}
       </p>
