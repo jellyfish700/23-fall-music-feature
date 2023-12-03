@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const TrackFeature = ({ trackID ,getTempo}) => {
+const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
   const accessToken = useParams().id;
   const trackId = trackID;
   const [trackInfo, setTrackInfo] = useState(null);
@@ -41,7 +41,11 @@ const TrackFeature = ({ trackID ,getTempo}) => {
 
         const data = await response.json();
         setFeatures(data);
+       
         getTempo(data.tempo);
+
+        getTrack(trackID)
+
       } catch (error) {
         console.error('Error fetching features:', error.message);
       }
