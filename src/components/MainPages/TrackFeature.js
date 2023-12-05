@@ -41,36 +41,23 @@ const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
 
         const data = await response.json();
         setFeatures(data);
-       
         getTempo(data.tempo);
-
         getTrack(trackID)
-
       } catch (error) {
         console.error('Error fetching features:', error.message);
       }
     }
-
     fetchTrackInfo();
     fetchFeatures();
-   
   }, [accessToken, trackId]);
-
-
 
   return (
     <div>
-      {/* <h2>Features Display for Track ID: {trackId}</h2> */}
       {trackInfo !== null && features !== null ? (
         <div>
-          {/* <p>Artists: {trackInfo.artists.map(artist => artist.name).join(', ')}</p>
-          <p>Track Name: {trackInfo.name}</p> */}
-          <ul>
-            <li>Danceability(ダンス): {features.danceability}</li>
-            <li>Energy(エネルギッシュ): {features.energy}</li>
-            <li>Tempo(テンポ): {features.tempo}</li>
-          </ul>
-          <br></br>
+          <p>Danceability(ダンス): {features.danceability}</p>
+          <p>Energy(エネルギッシュ): {features.energy}</p>
+          <p>Tempo(テンポ): {features.tempo}</p>
         </div>
       ) : (
         <p>Loading features...</p>

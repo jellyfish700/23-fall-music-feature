@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const ComponentC = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postTracklist }) => {
+const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postTracklist }) => {
     const accessToken = useParams().id;
     const [trackTitle, setTrackTitle] = useState(null);
     
@@ -46,24 +46,13 @@ const ComponentC = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelect
 
     return (
         <div>
-            {/* <p>list: {postTempoList}</p>
-
-            <p>
-                {postTempoList.map((tempo, index) => (
-                    <p key={index}>{tempo}</p>
-                ))}
-            </p> */}
-
-            <h1>選曲された曲</h1>
-
-            <h1>{trackTitle}</h1>
+            <h1>選曲された曲は「{trackTitle}」</h1>
             <p>tempo: {postSelectedTempo}</p>
             <p>energy: {postSelectedEnergy}</p>
             <p>dance: {postSelectedDance}</p>
-
             <button onClick={button}>戻る</button>
         </div>
     );
 };
 
-export default ComponentC;
+export default Suggest;

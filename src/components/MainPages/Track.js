@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 
-const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
+const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -10,8 +10,8 @@ const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelect
   const [energyValue, setEnergyValue] = useState(0);
   const [danceValue, setDanceValue] = useState(0);
 
-  const [tempoList, settempoList] = useState([])//selectTempoとの差を格納するリスト
-  const [trackList, settrackList] = useState([])//selectTempoとの差を格納するリスト
+  const [tempoList, settempoList] = useState([])
+  const [trackList, settrackList] = useState([])
 
 
   const handleTempoChange = (e) => {
@@ -77,67 +77,49 @@ const ComponentB = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelect
       <button onClick={backButton}>戻る</button>
       <button onClick={nextButton}>曲を検索する</button>
 
-        {/* Tempo */}
-        <p>Tempo : {tempoValue}</p>
-        <input 
-        type="range"
-        class="form-range"
-        id="tempoSelect"
-        min={60}
-        max={180}
-        value={tempoValue}
-        onChange={handleTempoChange}></input>
+      <p>Tempo : {tempoValue}</p>
+      <input 
+      type="range"
+      class="form-range"
+      id="tempoSelect"
+      min={60}
+      max={180}
+      value={tempoValue}
+      onChange={handleTempoChange}></input>
 
-        <p>Energy : {energyValue}</p>
-        <input 
-        type="range"
-        class="form-range"
-        id="energySelect"
-        // min={60}
-        // max={180}
-        value={energyValue}
-        onChange={handleEnergyChange}></input>
+      <p>Energy : {energyValue}</p>
+      <input 
+      type="range"
+      class="form-range"
+      id="energySelect"
+      value={energyValue}
+      onChange={handleEnergyChange}></input>
 
-        <p>Danceability : {danceValue}</p>
-        <input 
-        type="range"
-        class="form-range"
-        id="danceSelect"
-        // min={60}
-        // max={180}
-        value={danceValue}
-        onChange={handleDanceChange}></input>
+      <p>Danceability : {danceValue}</p>
+      <input 
+      type="range"
+      class="form-range"
+      id="danceSelect"
+      value={danceValue}
+      onChange={handleDanceChange}></input>
 
       {playlistTracks.length > 0 ? (
-        <ul>
+        <div>
           {playlistTracks.map(({ track }) => (
-            <li key={track.id}>
-              <div>
-                <h3>{track.name}</h3>
-                <p>By {track.artists.map((artist) => artist.name).join(', ')}</p>
-                <p>{track.id}</p>
-                <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
-                {track.album.images.length > 0 && (
-                  <img
-                    src={track.album.images[0].url}
-                    alt={`Album: ${track.album.name}`}
-                    style={{ width: '100px', height: '100px' }}
-                  />
-                )}
-              </div>
-            </li>
+            <div key={track.id}>
+              <h3>{track.name}  by {track.artists.map((artist) => artist.name).join(', ')}</h3>
+              <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
+              {track.album.images.length > 0 && (
+                <img src={track.album.images[0].url} alt={`Album: ${track.album.name}`} style={{ width: '100px', height: '100px' }}/>
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>Loading playlist tracks...</p>
       )}
-    <p>
-        {tempoList.map((tempo, index) => (
-          <p key={index}>{tempo}</p>
-        ))}
-      </p>
     </div>
   );
 };
 
-export default ComponentB;
+export default Track;

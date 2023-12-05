@@ -1,76 +1,12 @@
-// import React, { useState } from 'react';
-
-// import SelectPlaylist from './MainPages/SelectPlaylist';
-// import PlaylistTrack from './MainPages/PlaylistTrack';
-
-// const Main = () => {
-//   const [selectPlaylistPage, setSelect] = useState(true);
-//   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
-//   const [selectedTempo, setSelectedTempo] = useState(null);
-//   const [selectedEnergy, setSelectedEnergy] = useState(null);
-//   const [selectedDance, setSelectedDance] = useState(null);
-
-//   const serchTrack = () => {
-//     setSelect((selectComponent) => !selectComponent);
-//   };
-
-//   const handleSelectPlaylist = (playlistId) => {
-//     setSelectedPlaylistId(playlistId);
-//   };
-
-//   const handleSelectTempo = (tempo) => {
-//     setSelectedTempo(tempo);
-//   };
-
-//   const handleSelectEnergy = (energy) => {
-//     setSelectedEnergy(energy);
-//   };
-
-//   const handleSelectDance = (dance) => {
-//     setSelectedDance(dance);
-//   };
-
-//   return (
-//     <div>
-//       {selectPlaylistPage ? (
-//         <div>
-//             {/* <button onClick={serchTrack}>serch</button> */}
-//             <SelectPlaylist 
-//                 onSelectPlaylistID={handleSelectPlaylist}
-//                 onSelectTempo={handleSelectTempo}
-//                 onSelectEnergy={handleSelectEnergy}
-//                 onSelectDance={handleSelectDance}
-//                 onClick={serchTrack}
-//             />
-//         </div>
-//       ) : (
-//         <div>
-//             {/* <button onClick={serchTrack}>back</button> */}
-//             <PlaylistTrack 
-//                 selectedPlaylistId={selectedPlaylistId}
-//                 selectedTempo={selectedTempo}
-//                 selectedEnergy={selectedEnergy}
-//                 selectedDance={selectedDance}
-//                 onClick={serchTrack}
-//             />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Main;
-
-
 import React, { useState } from 'react';
-import ComponentA from './MainPages/ComponentA';
-import ComponentB from './MainPages/ComponentB';
-import ComponentC from './MainPages/ComponentC';
+import PlayList from './MainPages/PlayList';
+import Track from './MainPages/Track';
+import Suggest from './MainPages/Suggest';
 
 const Main = () => {
   //ページ遷移
   const [activeComponent, setActiveComponent] = useState('Playlist');
-  const handleComponentChange = (component) => {
+  const handleSuggesthange = (component) => {
     setActiveComponent(component);
   };
 
@@ -110,30 +46,26 @@ const Main = () => {
 
   return (
     <div>
-      {activeComponent === 'Playlist' && <ComponentA 
-      onClick={handleComponentChange} 
+      {activeComponent === 'Playlist' && <PlayList 
+      onClick={handleSuggesthange} 
       getSelectPlaylistID={handleSelectPlaylist}/>}
 
-      {activeComponent === 'Track' && <ComponentB 
-      onClick={handleComponentChange} 
+      {activeComponent === 'Track' && <Track 
+      onClick={handleSuggesthange} 
       postSelectedPlaylistId={selectedPlaylistId}
       getSelectTempo={handleSelectTempo}
       getSelectEnergy={handleSelectEnergy}
       getSelectDance={handleSelectDance}
       getTempoList={handleSetTempoList}
-      getTrackList={handleSetTrackList}
-/>}
-      {activeComponent === 'Suggest' && <ComponentC 
-      onClick={handleComponentChange}
+      getTrackList={handleSetTrackList}/>}
 
+      {activeComponent === 'Suggest' && <Suggest 
+      onClick={handleSuggesthange}
       postSelectedTempo={selectedTempo}
       postSelectedEnergy={selectedEnergy}
       postSelectedDance={selectedDance}
-
       postTempoList={tempoList}
-      postTracklist={trackList}
-      
-      />}
+      postTracklist={trackList}/>}
     </div>
   );
 };
