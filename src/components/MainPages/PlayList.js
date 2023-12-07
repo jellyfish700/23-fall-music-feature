@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const PlayList = ({getSelectPlaylistID, onClick}) => {
   const accessToken = useParams().id;
@@ -45,7 +46,7 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
             {images.length > 0 && (
               <img src={images[0].url} alt={`Playlist: ${name}`} style={{ width: '100px', height: '100px' }}/>
             )}
-            <button onClick={() => nextButton(id)}>プレイリストを選ぶ</button>
+            <Button onClick={() => nextButton(id)}>プレイリストを選ぶ</Button>
           </div>
           ))}
         </div>

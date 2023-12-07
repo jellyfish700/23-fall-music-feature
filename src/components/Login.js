@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const Login = () => {
   const handleLogin = () => {
@@ -18,7 +19,7 @@ const Login = () => {
   return (
     <div>
       <h1>Spotify Login</h1>
-      <button onClick={handleLogin}>Login with Spotify</button>
+      <Button onClick={handleLogin}>Login with Spotify</Button>
     </div>
   );
 };

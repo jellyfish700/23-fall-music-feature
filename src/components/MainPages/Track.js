@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import RangeSlider from 'react-bootstrap-range-slider';
+import { Button } from 'react-bootstrap';
 
 const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
   const accessToken = useParams().id;
@@ -74,34 +77,42 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
   return (
     <div>
       <h1>特徴量を選択してください</h1>
-      <button onClick={backButton}>戻る</button>
-      <button onClick={nextButton}>曲を検索する</button>
+      <Button onClick={backButton}>戻る</Button>
+      <Button onClick={nextButton}>曲を検索する</Button>
 
       <p>Tempo : {tempoValue}</p>
-      <input 
-      type="range"
-      class="form-range"
+      <RangeSlider
+      min ="60"
+      max="180"
+      variant='success'
       id="tempoSelect"
-      min={60}
-      max={180}
       value={tempoValue}
-      onChange={handleTempoChange}></input>
+      onChange={handleTempoChange}/>
+
+
 
       <p>Energy : {energyValue}</p>
-      <input 
-      type="range"
-      class="form-range"
+      <RangeSlider
+      min ="0"
+      max="100"
+      variant='success'
       id="energySelect"
       value={energyValue}
-      onChange={handleEnergyChange}></input>
+      onChange={handleEnergyChange}/>
+
+      
 
       <p>Danceability : {danceValue}</p>
-      <input 
-      type="range"
-      class="form-range"
+      <RangeSlider
+      min ="0"
+      max="100"
+      variant='success'
       id="danceSelect"
       value={danceValue}
-      onChange={handleDanceChange}></input>
+      onChange={handleDanceChange}/>
+
+
+      
 
       {playlistTracks.length > 0 ? (
         <div>

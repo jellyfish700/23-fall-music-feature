@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postTracklist }) => {
     const accessToken = useParams().id;
@@ -50,7 +51,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
             <p>tempo: {postSelectedTempo}</p>
             <p>energy: {postSelectedEnergy}</p>
             <p>dance: {postSelectedDance}</p>
-            <button onClick={button}>戻る</button>
+            <Button onClick={button}>戻る</Button>
         </div>
     );
 };
