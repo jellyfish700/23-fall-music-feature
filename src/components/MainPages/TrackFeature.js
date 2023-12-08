@@ -55,9 +55,9 @@ const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
     <div>
       {trackInfo !== null && features !== null ? (
         <div>
-          <p>Danceability(ダンス): {features.danceability}</p>
+          {/* <p>Danceability(ダンス): {features.danceability}</p>
           <p>Energy(エネルギッシュ): {features.energy}</p>
-          <p>Tempo(テンポ): {features.tempo}</p>
+          <p>Tempo(テンポ): {features.tempo}</p> */}
         </div>
       ) : (
         <p>Loading features...</p>

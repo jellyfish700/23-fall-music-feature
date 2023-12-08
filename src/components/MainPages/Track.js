@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import RangeSlider from 'react-bootstrap-range-slider';
 import { Button } from 'react-bootstrap';
 
 const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
@@ -77,51 +75,66 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
   return (
     <div>
       <p className='ft1'>特徴量を選択してください</p>
-      <Button className="button rounded-pill" onClick={backButton}>back</Button>
-      <Button className="button rounded-pill" onClick={nextButton}>search</Button>
+      
+      <div className='left'>
+        <div className='clear'>
+          <p className='left featureText'>Tempo  </p>
+          <p className='left featureNum'>  {tempoValue}</p>
+          <input 
+          type="range"
+          min ="60"
+          max="180"
+          className="form-range slider"
+          id="tempoSelect"
+          value={tempoValue}
+          onChange={handleTempoChange}></input>
+        </div>
 
-      <p>Tempo : {tempoValue}</p>
-      <RangeSlider
-      min ="60"
-      max="180"
-      variant='success'
-      id="tempoSelect"
-      value={tempoValue}
-      onChange={handleTempoChange}/>
+        <div className='clear'>
+          <p className='left featureText'>Energy</p>
+          <p className='left featureNum'>  {energyValue}</p>
+          <input 
+          type="range"
+          min ="0"
+          max="100"
+          className="form-range slider"
+          id="energySelect"
+          value={energyValue}
+          onChange={handleEnergyChange}></input>
+        </div>
 
-      <p>Energy : {energyValue}</p>
-      <RangeSlider
-      min ="0"
-      max="100"
-      variant='success'
-      id="energySelect"
-      value={energyValue}
-      onChange={handleEnergyChange}/>
-
-      <p>Danceability : {danceValue}</p>
-      <RangeSlider
-      min ="0"
-      max="100"
-      variant='success'
-      id="danceSelect"
-      value={danceValue}
-      onChange={handleDanceChange}/>
+        <div className='clear'>
+          <p className='left featureText'>Danceability  </p>
+          <p className='left featureNum'>  {danceValue}</p>
+          <input 
+          type="range"
+          min ="0"
+          max="100"
+          className="form-range slider"
+          id="danceSelect"
+          value={danceValue}
+          onChange={handleDanceChange}></input>
+        </div>
+      </div>
+      <Button className="button rounded-pill trackSearchButton" onClick={nextButton}>search</Button>
 
       {playlistTracks.length > 0 ? (
-        <div>
+        <div className='clear'>
           {playlistTracks.map(({ track }) => (
-            <div key={track.id}>
-              <p className='ft2'>{track.name}  by {track.artists.map((artist) => artist.name).join(', ')}</p>
-              <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
+            <div key={track.id} className='clear'>
               {track.album.images.length > 0 && (
-                <img src={track.album.images[0].url} alt={`Album: ${track.album.name}`} style={{ width: '100px', height: '100px' }}/>
+                <img className="trackImage left" src={track.album.images[0].url} alt={`Album: ${track.album.name}`} />
               )}
+              <p className='ft2 left trackName'>{track.name}</p>
+              <p className='ft2 left artistName'>by {track.artists.map((artist) => artist.name).join(', ')}</p>
+              <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
             </div>
           ))}
         </div>
       ) : (
         <p>Loading playlist tracks...</p>
       )}
+      <Button className="button rounded-pill trackBackButton" onClick={backButton}>back</Button>
     </div>
   );
 };
