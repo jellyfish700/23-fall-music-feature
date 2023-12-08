@@ -76,7 +76,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
     <div>
       <p className='ft1'>特徴量を選択してください</p>
       
-      <div className='left'>
+      <div className='left featureSelect'>
         <div className='clear'>
           <p className='left featureText'>Tempo  </p>
           <p className='left featureNum'>  {tempoValue}</p>
@@ -125,8 +125,10 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
               {track.album.images.length > 0 && (
                 <img className="trackImage left" src={track.album.images[0].url} alt={`Album: ${track.album.name}`} />
               )}
-              <p className='ft2 left trackName'>{track.name}</p>
-              <p className='ft2 left artistName'>by {track.artists.map((artist) => artist.name).join(', ')}</p>
+              <div className='trackInfo left'>
+                <p className='ft2  trackName'>{track.name}</p>
+                <p className='ft3  artistName'>by {track.artists.map((artist) => artist.name).join(', ')}</p>
+              </div>
               <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
             </div>
           ))}

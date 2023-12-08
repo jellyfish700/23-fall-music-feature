@@ -55,11 +55,11 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
 
     return (
         <div>
-            <div>
-                <img className="suggestImage left" src={trackImage}/>
-                <p className='ft1 suggestText left'>推薦された曲は「{trackTitle}」</p>
+            <img className="suggestImage left" src={trackImage}/>
+            <div className='suggestText'>
+                <p className='ft1  '>推薦された曲は</p>
+                <p className='ft1  '>「{trackTitle}」</p>
             </div>
-          
             <div className='clear suggestFeature'>
                 <p>推薦された曲のアーティストは{artistName}です。</p>
                 <p>tempo {postSelectedTempo}</p>

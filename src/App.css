@@ -107,20 +107,22 @@ html {
 /* playlist */
 .playlistName{
   width: 300px;
-  margin-left: 50px;
+  margin-left: 130px;
   margin-top: 30px;
 }
 .Playlistimage{
+  margin-left: 30px;
   margin-bottom: 20px;
   width: 100px;
 }
 .playlistButton{
+  margin-left: 200px;
   margin-top: 30px;
 }
 
 /* track */
 .slider{
-  width: 500px;
+  width: 450px;
 }
 
 .slider[type="range"]::-webkit-slider-thumb {
@@ -130,46 +132,45 @@ html {
   background-color: #2EBD59; /* つまみの背景色を設定 */
 }
 .featureText{
-  width: 210px;
+  width: 200px;
 }
 .featureNum{
-  width: 130px;
+  width: 100px;
 }
 .trackImage{
   margin-bottom: 20px;
   width: 100px;
 }
-.trackName{
-  margin-left: 50px;
-  margin-top: 30px;
-  width: 500px;
+.trackInfo{
+  width: 400px;
+  margin-left: 80px;
 }
 .artistName{
-  margin-top: 30px;
-  width: 300px;
+  margin-left: 70px;
 }
 .trackSearchButton{
-  margin-top:110px;
-  margin-left: 140px;
+  margin-top:130px;
+  margin-left: 50px;
 }
 .trackBackButton{
-  margin-left: 30px;
+  margin-left: 220px;
   margin-top: 20px;
+}
+.featureSelect{
+  margin: 20px 0 ;
 }
 /* suggest */
 .suggestImage{
   width: 200px;
-  height: 200px;
-  margin-top: 70px;
+  margin-top:-20px;
 }
 .suggestText{
-  margin-left: 100px;
-  margin-top: 140px;
+  margin-top: 70px;
 }
 .suggestFeature{
-  height: 300px;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 .suggestButton{
-  margin-top: 100px;
+  margin-top: -50px;
+  margin-left: 800px;
 }
