@@ -41,12 +41,13 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
       {userPlaylists.length > 0 ? (
         <div>
           {userPlaylists.map(({ id, name, images }) => (
-          <div key={id}>
-            <p className='ft2'>{name}</p>
+          <div key={id} className='clear'>
             {images.length > 0 && (
-              <img src={images[0].url} alt={`Playlist: ${name}`} style={{ width: '100px', height: '100px' }}/>
+              <img className="left Playlistimage"src={images[0].url} alt={`Playlist: ${name}`}/>
             )}
-            <Button className="button rounded-pill" onClick={() => nextButton(id)}>プレイリストを選ぶ</Button>
+            <p className='ft2 left playlistName'>{name}</p>
+            
+            <Button className="button rounded-pill left playlistButton" onClick={() => nextButton(id)}>select</Button>
           </div>
           ))}
         </div>

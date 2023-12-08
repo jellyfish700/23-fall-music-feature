@@ -22,7 +22,7 @@ const Login = () => {
       <p className='ft1 loginFont'>Spotifyのアカウントにログインしてください</p>
       <div className='text-center'>
       <Button className="button rounded-pill loginButton" onClick={handleLogin}>
-        <img src={icon} className='buttonLeft'/>
+        <img src={icon} className='iconLeft'/>
         Login with Spotify
       </Button>
       </div>

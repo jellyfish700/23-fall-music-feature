@@ -46,12 +46,9 @@ html {
     transform: rotate(360deg);
   }
 }
-.buttonLeft{
-  float: left;
-  padding-left: 10px;
-  padding-top: 3px;
-}
+
 .ft1{
+  margin-top: 20px;
   text-align: center;
   font-size: 45px;
 }
@@ -62,14 +59,14 @@ html {
   font-size: 20px;
 }
 
-
 .button{
   border: none;
   background-color: #2EBD59;
-  height: 60px;
-  width: 250px;
+  height: 50px;
+  width: 130px;
   font-size: 20px;
 }
+
 .button:hover{
   background-color: #299D4C;
 }
@@ -77,10 +74,46 @@ html {
   background-color: #299D4C !important;
 }
 
+.image{
+  width: '100px';
+  height: '100px';
+}
+
 /* login */
 .loginFont{
-  margin-top: 15vw;
+  margin-top: 10vw;
 }
 .loginButton{
   margin-top: 10vw;
+  border: none;
+  background-color: #2EBD59;
+  font-size: 20px;
+  height: 60px;
+  width: 250px;
+}
+.iconLeft{
+  float: left;
+  padding-left: 10px;
+  padding-top: 3px;
+}
+
+.left{
+  float: left;
+}
+.clear{
+  clear: both;
+}
+
+/* playlist */
+.playlistName{
+  width: 300px;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+.Playlistimage{
+  margin-bottom: 20px;
+  width: 100px;
+}
+.playlistButton{
+  margin-top: 30px;
 }

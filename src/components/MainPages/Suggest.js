@@ -51,7 +51,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
             <p>tempo: {postSelectedTempo}</p>
             <p>energy: {postSelectedEnergy}</p>
             <p>dance: {postSelectedDance}</p>
-            <Button className="button rounded-pill" onClick={button}>戻る</Button>
+            <Button className="button rounded-pill" onClick={button}>back</Button>
         </div>
     );
 };
