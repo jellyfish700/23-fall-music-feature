@@ -19,8 +19,13 @@ const Login = () => {
 
   return (
     <div>
-      <p className='ft1'>Spotifyのアカウントにログインしてください</p>
-      <Button className="button rounded-pill" onClick={handleLogin}><img src={icon}/>Login with Spotify</Button>
+      <p className='ft1 loginFont'>Spotifyのアカウントにログインしてください</p>
+      <div className='text-center'>
+      <Button className="button rounded-pill loginButton" onClick={handleLogin}>
+        <img src={icon} className='buttonLeft'/>
+        Login with Spotify
+      </Button>
+      </div>
     </div>
   );
 };
