@@ -7,9 +7,10 @@ html {
   }
 
 .App {
-  /* text-align: center; */
   font-size: 28px;
   color: #ffffff;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .App-logo {
@@ -66,7 +67,6 @@ html {
   width: 130px;
   font-size: 20px;
 }
-
 .button:hover{
   background-color: #299D4C;
 }
@@ -81,10 +81,10 @@ html {
 
 /* login */
 .loginFont{
-  margin-top: 10vw;
+  margin-top: 150px;
 }
 .loginButton{
-  margin-top: 10vw;
+  margin-top: 100px;
   border: none;
   background-color: #2EBD59;
   font-size: 20px;
@@ -96,7 +96,6 @@ html {
   padding-left: 10px;
   padding-top: 3px;
 }
-
 .left{
   float: left;
 }
@@ -124,7 +123,6 @@ html {
 .slider{
   width: 450px;
 }
-
 .slider[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Webkitブラウザのデフォルトのスタイルを無効化 */
   width: 20px; /* つまみの幅を設定 */
@@ -142,23 +140,24 @@ html {
   width: 100px;
 }
 .trackInfo{
-  width: 400px;
+  width: 550px;
   margin-left: 80px;
 }
 .artistName{
-  margin-left: 70px;
+  margin-left: 250px;
 }
 .trackSearchButton{
   margin-top:130px;
   margin-left: 50px;
 }
 .trackBackButton{
-  margin-left: 220px;
+  margin-left: 70px;
   margin-top: 20px;
 }
 .featureSelect{
   margin: 20px 0 ;
 }
+
 /* suggest */
 .suggestImage{
   width: 200px;
