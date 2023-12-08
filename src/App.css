@@ -156,3 +156,20 @@ html {
   margin-left: 30px;
   margin-top: 20px;
 }
+/* suggest */
+.suggestImage{
+  width: 200px;
+  height: 200px;
+  margin-top: 70px;
+}
+.suggestText{
+  margin-left: 100px;
+  margin-top: 140px;
+}
+.suggestFeature{
+  height: 300px;
+  padding-top: 100px;
+}
+.suggestButton{
+  margin-top: 100px;
+}
