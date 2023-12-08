@@ -1,16 +1,14 @@
-import React, { useState,useEffect } from 'react';
+import './App.css';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 
 import Login from './components/Login';
 import Callback from './components/Callback';
 import Main from './components/Main';
 
-
 const App = () => {
-  // const [accessToken, setAccessToken] = useState(null);
-  // const getAccessToken = (token) => {
-  //   setAccessToken(token);
   return (
+    <div className='App'>
     <Router>
       <div className="container">
         <Routes>
@@ -32,6 +30,7 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+    </div>
   );
 };
 

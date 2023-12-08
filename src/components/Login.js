@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Spotify Login</h1>
+      <p className='ft1'>Spotifyのアカウントにログインしてください</p>
       <Button onClick={handleLogin}>Login with Spotify</Button>
     </div>
   );

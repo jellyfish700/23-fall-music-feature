@@ -37,12 +37,12 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
 
   return (
     <div>
-      <h1>プレイリストを選択してください</h1>
+      <p className='ft1'>プレイリストを選択してください</p>
       {userPlaylists.length > 0 ? (
         <div>
           {userPlaylists.map(({ id, name, images }) => (
           <div key={id}>
-            <p>{name} (ID: {id})</p>
+            <p className='ft2'>{name}</p>
             {images.length > 0 && (
               <img src={images[0].url} alt={`Playlist: ${name}`} style={{ width: '100px', height: '100px' }}/>
             )}

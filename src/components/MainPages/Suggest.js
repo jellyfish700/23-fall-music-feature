@@ -47,7 +47,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
 
     return (
         <div>
-            <h1>選曲された曲は「{trackTitle}」</h1>
+            <p className='ft1'>選曲された曲は「{trackTitle}」</p>
             <p>tempo: {postSelectedTempo}</p>
             <p>energy: {postSelectedEnergy}</p>
             <p>dance: {postSelectedDance}</p>

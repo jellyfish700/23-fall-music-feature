@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  font-size: 20px;
 }
 
 .App-logo {
@@ -35,4 +36,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+.ft1{
+  font-size: 50px;
+}
+.ft2{
+  font-size: 28px;
+}
+.ft13{
+  font-size: 20px;
 }

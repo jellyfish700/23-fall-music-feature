@@ -76,7 +76,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
 
   return (
     <div>
-      <h1>特徴量を選択してください</h1>
+      <p className='ft1'>特徴量を選択してください</p>
       <Button onClick={backButton}>戻る</Button>
       <Button onClick={nextButton}>曲を検索する</Button>
 
@@ -89,8 +89,6 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
       value={tempoValue}
       onChange={handleTempoChange}/>
 
-
-
       <p>Energy : {energyValue}</p>
       <RangeSlider
       min ="0"
@@ -99,8 +97,6 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
       id="energySelect"
       value={energyValue}
       onChange={handleEnergyChange}/>
-
-      
 
       <p>Danceability : {danceValue}</p>
       <RangeSlider
@@ -111,14 +107,11 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
       value={danceValue}
       onChange={handleDanceChange}/>
 
-
-      
-
       {playlistTracks.length > 0 ? (
         <div>
           {playlistTracks.map(({ track }) => (
             <div key={track.id}>
-              <h3>{track.name}  by {track.artists.map((artist) => artist.name).join(', ')}</h3>
+              <p className='ft2'>{track.name}  by {track.artists.map((artist) => artist.name).join(', ')}</p>
               <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
               {track.album.images.length > 0 && (
                 <img src={track.album.images[0].url} alt={`Album: ${track.album.name}`} style={{ width: '100px', height: '100px' }}/>
