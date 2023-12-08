@@ -1,6 +1,15 @@
+/* 背景色 */
+html {
+  background-color: #2C2B2B;
+  }
+  div {
+  background-color: #2C2B2B;
+  }
+
 .App {
   /* text-align: center; */
   font-size: 20px;
+  color: #ffffff;
 }
 
 .App-logo {
@@ -51,6 +60,7 @@
   background-color: #2EBD59;
   height: 60px;
   width: 250px;
+  font-size: 20px;
 }
 .button:hover{
   background-color: #299D4C;

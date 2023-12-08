@@ -20,7 +20,7 @@ const Login = () => {
   return (
     <div>
       <p className='ft1'>Spotifyのアカウントにログインしてください</p>
-      <Button className="button rounded-pill ft3 loginButton" onClick={handleLogin}><img src={icon}/> Login with Spotify</Button>
+      <Button className="button rounded-pill" onClick={handleLogin}><img src={icon}/>Login with Spotify</Button>
     </div>
   );
 };
