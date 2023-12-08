@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import icon from './images/icon.svg'
 
 const Login = () => {
   const handleLogin = () => {
@@ -19,7 +20,7 @@ const Login = () => {
   return (
     <div>
       <p className='ft1'>Spotifyのアカウントにログインしてください</p>
-      <Button onClick={handleLogin}>Login with Spotify</Button>
+      <Button className="button rounded-pill ft3 loginButton" onClick={handleLogin}><img src={icon}/> Login with Spotify</Button>
     </div>
   );
 };

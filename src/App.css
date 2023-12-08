@@ -38,11 +38,23 @@
   }
 }
 .ft1{
-  font-size: 50px;
+  font-size: 45px;
 }
 .ft2{
   font-size: 28px;
 }
-.ft13{
+.ft3{
   font-size: 20px;
+}
+.button{
+  border: none;
+  background-color: #2EBD59;
+  height: 60px;
+  width: 250px;
+}
+.button:hover{
+  background-color: #299D4C;
+}
+.button:active{
+  background-color: #299D4C !important;
 }

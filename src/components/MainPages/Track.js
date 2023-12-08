@@ -77,8 +77,8 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
   return (
     <div>
       <p className='ft1'>特徴量を選択してください</p>
-      <Button onClick={backButton}>戻る</Button>
-      <Button onClick={nextButton}>曲を検索する</Button>
+      <Button className="button rounded-pill" onClick={backButton}>戻る</Button>
+      <Button className="button rounded-pill" onClick={nextButton}>曲を検索する</Button>
 
       <p>Tempo : {tempoValue}</p>
       <RangeSlider

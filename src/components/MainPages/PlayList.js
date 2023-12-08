@@ -46,7 +46,7 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
             {images.length > 0 && (
               <img src={images[0].url} alt={`Playlist: ${name}`} style={{ width: '100px', height: '100px' }}/>
             )}
-            <Button onClick={() => nextButton(id)}>プレイリストを選ぶ</Button>
+            <Button className="button rounded-pill" onClick={() => nextButton(id)}>プレイリストを選ぶ</Button>
           </div>
           ))}
         </div>
