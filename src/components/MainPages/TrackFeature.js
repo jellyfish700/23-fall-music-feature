@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BarChart from './Chart';
 
 const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
   const accessToken = useParams().id;
@@ -55,6 +56,11 @@ const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
     <div>
       {trackInfo !== null && features !== null ? (
         <div>
+          <BarChart 
+          tempo={features.tempo}
+          energy={features.energy}
+          danceability={features.danceability}
+          />
           {/* <p>Danceability(ダンス): {features.danceability}</p>
           <p>Energy(エネルギッシュ): {features.energy}</p>
           <p>Tempo(テンポ): {features.tempo}</p> */}

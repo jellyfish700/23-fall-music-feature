@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import BarChart from './Chart';
 
 const PlayList = ({getSelectPlaylistID, onClick}) => {
   const accessToken = useParams().id;
@@ -38,7 +37,6 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
 
   return (
     <div>
-      <BarChart />
       <p className='ft1'>プレイリストを選択してください</p>
       {userPlaylists.length > 0 ? (
         <div>

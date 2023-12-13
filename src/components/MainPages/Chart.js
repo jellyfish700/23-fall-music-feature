@@ -23,42 +23,48 @@ ChartJS.register(
   )
   
 
-const BarChart = () => {
+const BarChart = ({tempo, energy, danceability}) => {
     const data = {
         labels:["Tempo","Energy","Danceability"],
         datasets: [
             {
-            label: "特徴量", // 凡例
-            data: [100, 40, 80],
+            label: "特徴量",
+            data: [tempo, energy*200, danceability*200],
             fill: true,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgb(54, 162, 235)',
-            pointBackgroundColor: 'rgb(54, 162, 235)',
+            backgroundColor: 'rgba(46, 189, 89, 0.2)',
+            borderColor: 'rgb(46, 189, 89)',
+            pointBackgroundColor: 'rgb(46, 189, 89)',
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(54, 162, 235)',
+            pointHoverBorderColor: 'rgb(46, 189, 89)',
             
             },
+            
         ]
     }
     const options = {
         scales: {
-            r: {
-              beginAtZero: true, // 中心から始めるかどうか
-              ticks: {
-                display: false, // 数値のラベルを非表示にする
-              },
-              grid: {
-                color: "rgba(255, 255, 255, 0.3)", // 目盛りの線の色を設定
-              },
+          r: {
+            beginAtZero: true,
+            max: 200,
+            ticks: {
+              display: false,
             },
-            
+            grid: {
+              color: "rgba(255, 255, 255, 0.3)",
+            },
           },
-    }
+        },
+        plugins: {
+          legend: {
+            display: false, //ラベル非表示
+          },
+        },
+      };
 
     return (
     <div>
-        <Radar data={data} options={options}/>
+        <Radar data={data} options={options} className="chart"/>
     </div>
     )
   };

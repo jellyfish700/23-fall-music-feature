@@ -122,14 +122,19 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
         <div className='clear'>
           {playlistTracks.map(({ track }) => (
             <div key={track.id} className='clear'>
+              <div>
+                <p className='ft2 left trackName'>{track.name}</p>
+                <p className='ft2'>by {track.artists.map((artist) => artist.name).join(', ')}</p>
+              </div>
+
+              <div>
               {track.album.images.length > 0 && (
                 <img className="trackImage left" src={track.album.images[0].url} alt={`Album: ${track.album.name}`} />
               )}
-              <div className='trackInfo left'>
-                <p className='ft2  trackName'>{track.name}</p>
-                <p className='ft3  artistName'>by {track.artists.map((artist) => artist.name).join(', ')}</p>
-              </div>
+              
               <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
+              </div>
+              
             </div>
           ))}
         </div>
