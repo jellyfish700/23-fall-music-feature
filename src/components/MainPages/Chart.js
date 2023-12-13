@@ -9,8 +9,6 @@ import {
     Filler,
     Tooltip,
     Legend,
-    ChartData,
-    ChartOptions,
   } from 'chart.js';
 
 ChartJS.register(
@@ -21,7 +19,6 @@ ChartJS.register(
     Tooltip,
     Legend,
   )
-  
 
 const BarChart = ({tempo, energy, danceability}) => {
     const data = {
@@ -37,9 +34,7 @@ const BarChart = ({tempo, energy, danceability}) => {
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgb(46, 189, 89)',
-            
             },
-            
         ]
     }
     const options = {
@@ -57,7 +52,7 @@ const BarChart = ({tempo, energy, danceability}) => {
         },
         plugins: {
           legend: {
-            display: false, //ラベル非表示
+            display: false,
           },
         },
       };

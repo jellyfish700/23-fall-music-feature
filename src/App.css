@@ -154,7 +154,7 @@ html {
   display: block;
 }
 .featureSelect{
-  margin: 20px 0 ;
+  margin: 20px 0 50px 0;
 }
 
 /* suggest */
@@ -173,6 +173,7 @@ html {
   margin-left: 800px;
 }
 
+/* chart */
 .chart{
   width: 300px !important;
   height: 300px !important;
