@@ -136,23 +136,22 @@ html {
   width: 100px;
 }
 .trackImage{
-  margin-bottom: 20px;
-  width: 100px;
+  width: 200px;
+  margin-right: 100px;
+  margin-top: 30px;
 }
-.trackInfo{
-  width: 550px;
-  margin-left: 80px;
-}
-.artistName{
-  margin-left: 250px;
+.trackName{
+  margin-right: 30px;
 }
 .trackSearchButton{
   margin-top:130px;
   margin-left: 50px;
 }
 .trackBackButton{
-  margin-left: 70px;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 0;
+  margin-left: auto;
+  display: block;
 }
 .featureSelect{
   margin: 20px 0 ;
@@ -172,4 +171,9 @@ html {
 .suggestButton{
   margin-top: -50px;
   margin-left: 800px;
+}
+
+.chart{
+  width: 300px !important;
+  height: 300px !important;
 }
