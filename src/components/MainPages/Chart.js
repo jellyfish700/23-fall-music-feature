@@ -20,6 +20,7 @@ ChartJS.register(
     Legend,
   )
 
+  
 const BarChart = ({tempo, energy, danceability}) => {
     const data = {
         labels:["Tempo","Energy","Danceability"],
