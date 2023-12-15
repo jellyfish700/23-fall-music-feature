@@ -2,29 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postTracklist }) => {
+const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
     const accessToken = useParams().id;
     const [trackTitle, setTrackTitle] = useState(null);
     const [trackImage, setTrackImage] = useState(null);
     const [previewUrl, setpreviewUrl] = useState(null);
     const [artistName, setartistName] = useState(null);
-    
-    useEffect(() => {
-    let closestIndex = 0;
-    let closestDifference = Math.abs(postTempoList[0] - postSelectedTempo);
 
-        for (let i = 1; i < postTempoList.length; i++) {
-            const difference = Math.abs(postTempoList[i] - postSelectedTempo);
-        
-            if (difference < closestDifference) {
-                closestIndex = i;
-                closestDifference = difference;
+    useEffect(() => {
+
+        let getFeature = Number(postSelectedTempo) + Number(postSelectedEnergy)*5 + Number(postSelectedDance)*5//選択した値の特徴量
+        let featureList=[]//energyとdancebilityの値を100倍にした値とテンポを足し合わせ、それを曲の特徴量とする
+        for (let i = 0; i < postTempoList.length; i++) {
+            let currentFeature = postTempoList[i] + postEnergyList[i]*50 + postDanceabilityList[i]*50
+            featureList.push(currentFeature)
+        }
+
+        let closeIndex = 0;
+        let closeDifference = Math.abs(featureList[0] - getFeature);
+
+        for (let i = 1; i < featureList.length; i++) {
+            const difference = Math.abs(featureList[i] - getFeature);
+            if (difference < closeDifference) {
+                closeIndex = i;
+                closeDifference = difference;
             }
         }
 
         async function fetchTrackTitle() {
             try {
-                const response = await fetch(`https://api.spotify.com/v1/tracks/${postTracklist[closestIndex]}`, {
+                const response = await fetch(`https://api.spotify.com/v1/tracks/${postTracklist[closeIndex]}`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
@@ -35,7 +42,6 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                 }
 
                 const data = await response.json();
-                console.log(data)
                 setTrackTitle(data.name);
                 setTrackImage(data.album.images[0].url);
                 setpreviewUrl(data.preview_url);
@@ -47,7 +53,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
         }
 
         fetchTrackTitle();
-    }, [postSelectedTempo, postTempoList, postTracklist, accessToken]);
+    }, [postSelectedTempo, postTempoList, postEnergyList, postDanceabilityList, postTracklist, accessToken]);
 
     function button() {
         onClick("Playlist");

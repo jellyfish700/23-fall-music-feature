@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BarChart from './Chart';
 
-const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
+const TrackFeature = ({ trackID ,getTempo, getEnergy, getDanceability, getTrack}) => {
   const accessToken = useParams().id;
   const trackId = trackID;
   const [trackInfo, setTrackInfo] = useState(null);
@@ -43,6 +43,8 @@ const TrackFeature = ({ trackID ,getTempo, getTrack}) => {
         const data = await response.json();
         setFeatures(data);
         getTempo(data.tempo);
+        getEnergy(data.energy);
+        getDanceability(data.danceability);
         getTrack(trackID)
       } catch (error) {
         console.error('Error fetching features:', error.message);

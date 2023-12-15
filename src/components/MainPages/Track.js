@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 import { Button } from 'react-bootstrap';
 
-const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getTrackList }) => {
+const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getEnergyList, getDanceabilityList, getTrackList }) => {
   const accessToken = useParams().id;
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
@@ -12,6 +12,8 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
   const [danceValue, setDanceValue] = useState(0);
 
   const [tempoList, settempoList] = useState([])
+  const [energyList, setenergyList] = useState([])
+  const [danceabilityList, setdanceabilityList] = useState([])
   const [trackList, settrackList] = useState([])
 
 
@@ -60,12 +62,22 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
     getSelectEnergy(energyValue);
     getSelectDance(danceValue);
     getTempoList(tempoList);
+    getEnergyList(energyList);
+    getDanceabilityList(danceabilityList);
     getTrackList(trackList);
   }
 
 
   const addTempoList = (name) => {
     settempoList(tempoList=>[...tempoList, name])
+  }
+
+  const addEnergyList = (name) => {
+    setenergyList(energyList=>[...energyList, name])
+  }
+
+  const addDanceabilityList = (name) => {
+    setdanceabilityList(danceabilityList=>[...danceabilityList, name])
   }
 
   const addTrack = (name) => {
@@ -96,7 +108,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
           <input 
           type="range"
           min ="0"
-          max="100"
+          max="10"
           className="form-range slider"
           id="energySelect"
           value={energyValue}
@@ -109,7 +121,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
           <input 
           type="range"
           min ="0"
-          max="100"
+          max="10"
           className="form-range slider"
           id="danceSelect"
           value={danceValue}
@@ -132,7 +144,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
                 <img className="trackImage left" src={track.album.images[0].url} alt={`Album: ${track.album.name}`} />
               )}
               
-              <TrackFeature trackID={track.id} getTempo={addTempoList} getTrack={addTrack}/>
+              <TrackFeature trackID={track.id} getTempo={addTempoList}  getEnergy={addEnergyList} getDanceability={addDanceabilityList} getTrack={addTrack}/>
               </div>
               
             </div>
