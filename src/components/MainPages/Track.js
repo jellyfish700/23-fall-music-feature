@@ -108,7 +108,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
           <input 
           type="range"
           min ="0"
-          max="100"
+          max="10"
           className="form-range slider"
           id="energySelect"
           value={energyValue}
@@ -121,7 +121,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
           <input 
           type="range"
           min ="0"
-          max="100"
+          max="10"
           className="form-range slider"
           id="danceSelect"
           value={danceValue}

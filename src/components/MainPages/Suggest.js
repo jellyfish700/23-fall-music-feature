@@ -8,43 +8,30 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
     const [trackImage, setTrackImage] = useState(null);
     const [previewUrl, setpreviewUrl] = useState(null);
     const [artistName, setartistName] = useState(null);
-    
+
     useEffect(() => {
-        let closeTempoIndex = 0;
-        let closeEnergyIndex = 0;
-        let closeDanceabilityIndex = 0;
 
-        let closeTempoDifference = Math.abs(postTempoList[0] - postSelectedTempo);
-        let closeEnergyDifference = Math.abs(postEnergyList[0] - postSelectedEnergy);
-        let closeDanceabilityDifference = Math.abs(postDanceabilityList[0] - postSelectedDance);
-
-        for (let i = 1; i < postTempoList.length; i++) {
-            const difference = Math.abs(postTempoList[i] - postSelectedTempo);
-            if (difference < closeTempoDifference) {
-                closeTempoIndex = i;
-                closeTempoDifference = difference;
-            }
+        let getFeature = Number(postSelectedTempo) + Number(postSelectedEnergy)*5 + Number(postSelectedDance)*5//選択した値の特徴量
+        let featureList=[]//energyとdancebilityの値を100倍にした値とテンポを足し合わせ、それを曲の特徴量とする
+        for (let i = 0; i < postTempoList.length; i++) {
+            let currentFeature = postTempoList[i] + postEnergyList[i]*50 + postDanceabilityList[i]*50
+            featureList.push(currentFeature)
         }
 
-        for (let i = 1; i < postEnergyList.length; i++) {
-            const difference = Math.abs(postEnergyList[i] - postSelectedEnergy);
-            if (difference < closeEnergyDifference) {
-                closeEnergyIndex = i;
-                closeEnergyDifference = difference;
-            }
-        }
+        let closeIndex = 0;
+        let closeDifference = Math.abs(featureList[0] - getFeature);
 
-        for (let i = 1; i < postDanceabilityList.length; i++) {
-            const difference = Math.abs(postDanceabilityList[i] - postSelectedDance);
-            if (difference < closeDanceabilityDifference) {
-                closeDanceabilityIndex = i;
-                closeDanceabilityDifference = difference;
+        for (let i = 1; i < featureList.length; i++) {
+            const difference = Math.abs(featureList[i] - getFeature);
+            if (difference < closeDifference) {
+                closeIndex = i;
+                closeDifference = difference;
             }
         }
 
         async function fetchTrackTitle() {
             try {
-                const response = await fetch(`https://api.spotify.com/v1/tracks/${postTracklist[closeTempoIndex]}`, {
+                const response = await fetch(`https://api.spotify.com/v1/tracks/${postTracklist[closeIndex]}`, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
@@ -74,8 +61,6 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
 
     return (
         <div>
-            <p>{postDanceabilityList}</p>
-
             <img className="suggestImage left" src={trackImage}/>
             <div className='suggestText'>
                 <p className='ft1  '>推薦された曲は</p>
