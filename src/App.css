@@ -172,6 +172,9 @@ html {
   margin-top: -50px;
   margin-left: 800px;
 }
+.musicButton{
+  width: 250px;
+}
 
 /* chart */
 .chart{
