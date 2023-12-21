@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { getLocalAccessToken } from '../Spotify';
 
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
-    const accessToken = useParams().id;
+    const accessToken = getLocalAccessToken();
     const [trackTitle, setTrackTitle] = useState(null);
     const [trackImage, setTrackImage] = useState(null);
     const [previewUrl, setpreviewUrl] = useState(null);

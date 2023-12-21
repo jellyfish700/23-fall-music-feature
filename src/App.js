@@ -20,7 +20,7 @@ const App = () => {
             path="/callback" 
             element={<Callback  />} />
           <Route 
-            path="/page/:id"
+            path="/page"
             element={
             <div>
               <Main />

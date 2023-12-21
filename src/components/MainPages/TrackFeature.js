@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import BarChart from './Chart';
+import { getLocalAccessToken } from '../Spotify';
 
 const TrackFeature = ({ trackID ,getTempo, getEnergy, getDanceability, getTrack}) => {
-  const accessToken = useParams().id;
+  const accessToken = getLocalAccessToken();
   const trackId = trackID;
   const [trackInfo, setTrackInfo] = useState(null);
   const [features, setFeatures] = useState(null);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import { getLocalAccessToken } from '../Spotify';
 
 const UserProfile = ( ) => {
-const accessToken = useParams().id;
+const accessToken = getLocalAccessToken();
 console.log(accessToken)
   const [userData, setUserData] = useState(null);
 

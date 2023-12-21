@@ -28,10 +28,9 @@ const Callback = () => {
                     'Content-Type': 'application/x-www-form-urlencoded',
                   },
             });
-        // 取得したアクセストークンを親コンポーネントに渡す
-        // sendData(response.data.access_token);
+        localStorage.setItem('accessToken', response.data.access_token);
 
-        const page = 'http://localhost:3000/page/'+response.data.access_token;
+        const page = 'http://localhost:3000/page';
         window.location.href = `${page}`;
 
       } catch (error) {
