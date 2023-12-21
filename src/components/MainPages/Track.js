@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import TrackFeature from './TrackFeature';
 import { Button } from 'react-bootstrap';
+import { getLocalAccessToken } from '../Spotify';
 
 const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnergy, getSelectDance, getTempoList, getEnergyList, getDanceabilityList, getTrackList }) => {
-  const accessToken = useParams().id;
+  const accessToken = getLocalAccessToken();
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const [tempoValue, setTempoValue] = useState(0);

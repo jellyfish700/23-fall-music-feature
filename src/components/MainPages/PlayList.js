@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { getLocalAccessToken } from '../Spotify';
 
 const PlayList = ({getSelectPlaylistID, onClick}) => {
-  const accessToken = useParams().id;
+  const accessToken = getLocalAccessToken();
   const [userPlaylists, setUserPlaylists] = useState([]);
 
   useEffect(() => {

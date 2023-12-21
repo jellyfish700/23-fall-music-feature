@@ -4,7 +4,6 @@ import icon from './images/icon.svg'
 
 const Login = () => {
   const handleLogin = () => {
-
     const authUrl = 'https://accounts.spotify.com/authorize';
     const clientId = 'bab9851d507c4ac28f0e97c7f09cef5d';
     const redirectUri = 'http://localhost:3000/callback';
