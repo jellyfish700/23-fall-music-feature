@@ -23,6 +23,7 @@ const TrackFeature = ({ trackID ,getTempo, getEnergy, getDanceability, getTrack}
 
         const data = await response.json();
         setTrackInfo(data);
+        console.log(data)
       } catch (error) {
         console.error('Error fetching track info:', error.message);
       }

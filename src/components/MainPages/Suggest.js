@@ -56,7 +56,9 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
     function button() {
         onClick("Playlist");
     }
-
+    function music() {
+        window.location.href = `${previewUrl}`;
+    }
     return (
         <div>
             {trackData ? (
@@ -67,13 +69,13 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                     <p className='ft1  '>「{trackData.name}」</p>
                 </div>
                 <div className='clear suggestFeature'>
-                    <p>推薦された曲のアーティストは{trackData.album.artists[0].name}です。</p>
+                    <p className='left'>推薦された曲のアーティストは{trackData.album.artists[0].name}です。</p>
                     {/* <p>tempo {postSelectedTempo}</p>
                     <p>energy {postSelectedEnergy}</p>
                     <p>dance {postSelectedDance}</p> */}
                     {/* <p>{previewUrl}</p> */}
-                    <TrackFeature trackID={trackData.id}/>
-                    <Button className="button rounded-pill musicButton" href={previewUrl}>聴いてみる</Button>
+                    {/* <TrackFeature trackID={trackData.id}/> */}
+                    <Button className="button rounded-pill musicButton" onClick={music}>曲を聴いてみる</Button>
                     <Button className="button rounded-pill suggestButton" onClick={button}>戻る</Button>
                 </div>
         
