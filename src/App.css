@@ -172,7 +172,7 @@ html {
   padding-top: 50px;
 }
 .suggestButton{
-  margin-top: 100px;
+  margin-top: -80px;
   margin-left: 800px;
 }
 .musicButton{
@@ -189,5 +189,9 @@ html {
 /* chart */
 .chart{
   width: 300px !important;
+  height: 300px !important;
+}
+.suggestChart{
+  width: 700px !important;
   height: 300px !important;
 }

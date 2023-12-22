@@ -72,7 +72,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                     </div>
                 </div>
                 <div className='clear suggestFeature'>
-                    <SuggestFeature trackID={trackData.id}/>
+                    <SuggestFeature trackID={trackData.id} className="left"/>
                     <Button className="button rounded-pill suggestButton" onClick={button}>back</Button>
                 </div>
             </>

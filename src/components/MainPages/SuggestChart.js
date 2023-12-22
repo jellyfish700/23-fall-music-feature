@@ -41,6 +41,7 @@ const SuggestChart = ({ energy, danceability, acousticness, speechiness, livenes
         ]
     }
     const options = {
+      indexAxis: 'y',
       scales: {
         y: {
           beginAtZero: true,
@@ -55,7 +56,7 @@ const SuggestChart = ({ energy, danceability, acousticness, speechiness, livenes
 
     return (
     <div>
-        <Bar data={data} options={options}/>
+        <Bar data={data} options={options} className="suggestChart"/>
     </div>
     )
   };
