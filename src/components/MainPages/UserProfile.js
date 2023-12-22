@@ -1,3 +1,4 @@
+// 今回のソフトウェアでは使用しない
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getLocalAccessToken } from '../Spotify';

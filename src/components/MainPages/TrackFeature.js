@@ -64,9 +64,6 @@ const TrackFeature = ({ trackID ,getTempo, getEnergy, getDanceability, getTrack}
           energy={features.energy}
           danceability={features.danceability}
           />
-          {/* <p>Danceability(ダンス): {features.danceability}</p>
-          <p>Energy(エネルギッシュ): {features.energy}</p>
-          <p>Tempo(テンポ): {features.tempo}</p> */}
         </div>
       ) : (
         <p>Loading features...</p>
