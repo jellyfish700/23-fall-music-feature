@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import TrackFeature from './TrackFeature';
 import { Button } from 'react-bootstrap';
 import { getLocalAccessToken } from '../Spotify';
+import play from '../images/play.svg'
 
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
     const accessToken = getLocalAccessToken();
-    const [trackTitle, setTrackTitle] = useState(null);
-    const [trackImage, setTrackImage] = useState(null);
+    const [trackData, setTrackData] = useState(null);
     const [previewUrl, setpreviewUrl] = useState(null);
-    const [artistName, setartistName] = useState(null);
 
     useEffect(() => {
 
@@ -42,10 +42,9 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                 }
 
                 const data = await response.json();
-                setTrackTitle(data.name);
-                setTrackImage(data.album.images[0].url);
+                console.log(data)
+                setTrackData(data);
                 setpreviewUrl(data.preview_url);
-                setartistName(data.album.artists[0].name);
 
             } catch (error) {
                 console.error('Error fetching playlist tracks:', error.message);
@@ -58,22 +57,35 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
     function button() {
         onClick("Playlist");
     }
-
+    function music() {
+        window.location.href = `${previewUrl}`;
+    }
     return (
         <div>
-            <img className="suggestImage left" src={trackImage}/>
-            <div className='suggestText'>
-                <p className='ft1  '>推薦された曲は</p>
-                <p className='ft1  '>「{trackTitle}」</p>
-            </div>
-            <div className='clear suggestFeature'>
-                <p>推薦された曲のアーティストは{artistName}です。</p>
-                <p>tempo {postSelectedTempo}</p>
-                <p>energy {postSelectedEnergy}</p>
-                <p>dance {postSelectedDance}</p>
-                {/* <p>{previewUrl}</p> */}
-            </div>
-            <Button className="button rounded-pill suggestButton" onClick={button}>back</Button>
+            {trackData ? (
+            <>
+                <img className="suggestImage left" src={trackData.album.images[0].url}/>
+                <div className='suggestText'>
+                    <p className='ft1  '>推薦された曲は</p>
+                    <p className='ft1  '>「{trackData.name}」</p>
+                </div>
+                <div className='clear suggestFeature'>
+                    <p className='left'>推薦された曲のアーティストは{trackData.album.artists[0].name}です。</p>
+                    {/* <p>tempo {postSelectedTempo}</p>
+                    <p>energy {postSelectedEnergy}</p>
+                    <p>dance {postSelectedDance}</p> */}
+                    {/* <p>{previewUrl}</p> */}
+                    {/* <TrackFeature trackID={trackData.id}/> */}
+                    
+                    <Button className="button rounded-pill musicButton" onClick={music}><img src={play} className='playIcon'/>曲を聴いてみる</Button>
+                    <Button className="button rounded-pill suggestButton" onClick={button}>戻る</Button>
+                </div>
+        
+
+            </>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     );
 };
