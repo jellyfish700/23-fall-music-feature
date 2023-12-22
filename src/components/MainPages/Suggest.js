@@ -41,6 +41,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                 const data = await response.json();
                 console.log(data)
                 setTrackData(data);
+    
 
             } catch (error) {
                 console.error('Error fetching playlist tracks:', error.message);
@@ -62,14 +63,14 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
             <>
                 <img className="suggestImage left" src={trackData.album.images[0].url}/>
                 <div className='suggestText'>
-                    <p className='ft1  '>推薦された曲は</p>
-                    <p className='ft1  '>「{trackData.name}」</p>
+                    <p className='ft1'>{trackData.name}</p>
+                    <p className='ft2 ftCenter'>{trackData.album.artists[0].name} / {trackData.album.name}</p>
+                    <div className='musicButtonPosition'>
+                    <Button className="button rounded-pill musicButton" onClick={music}><img src={play} className='playIcon'/>Play on Spotify</Button>
+                    </div>
                 </div>
                 <div className='clear suggestFeature'>
-                    <p className='left'>推薦された曲のアーティストは{trackData.album.artists[0].name}です。</p>
-                    
-                    <Button className="button rounded-pill musicButton" onClick={music}><img src={play} className='playIcon'/>曲を聴いてみる</Button>
-                    <Button className="button rounded-pill suggestButton" onClick={button}>戻る</Button>
+                    <Button className="button rounded-pill suggestButton" onClick={button}>back</Button>
                 </div>
         
 
