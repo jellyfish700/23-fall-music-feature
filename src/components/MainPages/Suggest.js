@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TrackFeature from './TrackFeature';
 import { Button } from 'react-bootstrap';
 import { getLocalAccessToken } from '../Spotify';
+import play from '../images/play.svg'
 
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
     const accessToken = getLocalAccessToken();
@@ -75,7 +76,8 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                     <p>dance {postSelectedDance}</p> */}
                     {/* <p>{previewUrl}</p> */}
                     {/* <TrackFeature trackID={trackData.id}/> */}
-                    <Button className="button rounded-pill musicButton" onClick={music}>曲を聴いてみる</Button>
+                    
+                    <Button className="button rounded-pill musicButton" onClick={music}><img src={play} className='playIcon'/>曲を聴いてみる</Button>
                     <Button className="button rounded-pill suggestButton" onClick={button}>戻る</Button>
                 </div>
         
