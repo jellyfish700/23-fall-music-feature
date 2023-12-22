@@ -59,6 +59,9 @@ html {
 .ft3{
   font-size: 20px;
 }
+.ftCenter{
+  text-align: center;
+}
 
 .button{
   border: none;
@@ -160,21 +163,23 @@ html {
 /* suggest */
 .suggestImage{
   width: 200px;
-  margin-top:-20px;
 }
 .suggestText{
   margin-top: 70px;
+  width: 800px;
 }
 .suggestFeature{
   padding-top: 50px;
 }
 .suggestButton{
-  margin-top: 100px;
+  margin-top: -80px;
   margin-left: 800px;
 }
 .musicButton{
   width: 230px;
-  margin-left: 80px;
+}
+.musicButtonPosition{
+  text-align: center;
 }
 .playIcon{
   margin-bottom: 4px;
@@ -184,5 +189,9 @@ html {
 /* chart */
 .chart{
   width: 300px !important;
+  height: 300px !important;
+}
+.suggestChart{
+  width: 700px !important;
   height: 300px !important;
 }
