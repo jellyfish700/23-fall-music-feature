@@ -10,7 +10,6 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
     const [previewUrl, setpreviewUrl] = useState(null);
 
     useEffect(() => {
-
         let getFeature = Number(postSelectedTempo) + Number(postSelectedEnergy)*5 + Number(postSelectedDance)*5//選択した値の特徴量
         let featureList=[]//energyとdancebilityの値を100倍にした値とテンポを足し合わせ、それを曲の特徴量とする
         for (let i = 0; i < postTempoList.length; i++) {

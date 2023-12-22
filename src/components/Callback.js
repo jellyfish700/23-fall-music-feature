@@ -19,7 +19,6 @@ const Callback = () => {
         grant_type: 'authorization_code',
       });
       try {
-        // アクセストークンを取得するリクエスト
         const response = await axios.post(
             'https://accounts.spotify.com/api/token', 
             tokenRequest.toString(),
