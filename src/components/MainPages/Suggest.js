@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap';
 import { getLocalAccessToken } from '../Spotify';
 import play from '../images/play.svg'
 
+import SuggestFeature from './SuggestFeature'
+
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
     const accessToken = getLocalAccessToken();
     const [trackData, setTrackData] = useState(null);
@@ -70,10 +72,9 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                     </div>
                 </div>
                 <div className='clear suggestFeature'>
+                    <SuggestFeature trackID={trackData.id}/>
                     <Button className="button rounded-pill suggestButton" onClick={button}>back</Button>
                 </div>
-        
-
             </>
             ) : (
                 <p>Loading...</p>
