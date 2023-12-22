@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import TrackFeature from './TrackFeature';
 import { Button } from 'react-bootstrap';
 import { getLocalAccessToken } from '../Spotify';
 import play from '../images/play.svg'
@@ -7,7 +6,6 @@ import play from '../images/play.svg'
 const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedDance, postTempoList, postEnergyList, postDanceabilityList, postTracklist }) => {
     const accessToken = getLocalAccessToken();
     const [trackData, setTrackData] = useState(null);
-    const [previewUrl, setpreviewUrl] = useState(null);
 
     useEffect(() => {
         let getFeature = Number(postSelectedTempo) + Number(postSelectedEnergy)*5 + Number(postSelectedDance)*5//選択した値の特徴量
@@ -43,7 +41,6 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                 const data = await response.json();
                 console.log(data)
                 setTrackData(data);
-                setpreviewUrl(data.preview_url);
 
             } catch (error) {
                 console.error('Error fetching playlist tracks:', error.message);
@@ -57,7 +54,7 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
         onClick("Playlist");
     }
     function music() {
-        window.location.href = `${previewUrl}`;
+        window.location.href = `${trackData.external_urls.spotify}`;
     }
     return (
         <div>
@@ -70,11 +67,6 @@ const Suggest = ({ onClick, postSelectedTempo, postSelectedEnergy, postSelectedD
                 </div>
                 <div className='clear suggestFeature'>
                     <p className='left'>推薦された曲のアーティストは{trackData.album.artists[0].name}です。</p>
-                    {/* <p>tempo {postSelectedTempo}</p>
-                    <p>energy {postSelectedEnergy}</p>
-                    <p>dance {postSelectedDance}</p> */}
-                    {/* <p>{previewUrl}</p> */}
-                    {/* <TrackFeature trackID={trackData.id}/> */}
                     
                     <Button className="button rounded-pill musicButton" onClick={music}><img src={play} className='playIcon'/>曲を聴いてみる</Button>
                     <Button className="button rounded-pill suggestButton" onClick={button}>戻る</Button>
