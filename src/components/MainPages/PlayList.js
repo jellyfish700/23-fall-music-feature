@@ -47,7 +47,7 @@ const PlayList = ({getSelectPlaylistID, onClick}) => {
             )}
             <p className='ft2 left playlistName'>{name}</p>
             
-            <Button className="button rounded-pill left playlistButton" onClick={() => nextButton(id)}>select</Button>
+            <Button className="button rounded-pill left playlistButton" onClick={() => nextButton(id)}>Select</Button>
           </div>
           ))}
         </div>

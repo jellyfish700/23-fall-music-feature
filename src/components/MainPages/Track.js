@@ -128,7 +128,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
           onChange={handleDanceChange}></input>
         </div>
       </div>
-      <Button className="button rounded-pill trackSearchButton" onClick={nextButton}>search</Button>
+      <Button className="button rounded-pill trackSearchButton" onClick={nextButton}>Search</Button>
 
       {playlistTracks.length > 0 ? (
         <div className='clear'>
@@ -153,7 +153,7 @@ const Track = ({ postSelectedPlaylistId, onClick, getSelectTempo, getSelectEnerg
       ) : (
         <p>Loading playlist tracks...</p>
       )}
-      <Button className="button rounded-pill trackBackButton" onClick={backButton}>back</Button>
+      <Button className="button rounded-pill trackBackButton" onClick={backButton}>Back</Button>
     </div>
   );
 };
