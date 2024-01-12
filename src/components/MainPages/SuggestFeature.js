@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getLocalAccessToken } from '../Spotify';
-import SuggestChart from './SuggestChart'
+import ChartSuggestTrack from './ChartSuggestTarck'
 
 const TrackFeature = ({ trackID }) => {
   const accessToken = getLocalAccessToken();
@@ -56,7 +56,7 @@ const TrackFeature = ({ trackID }) => {
       {trackInfo !== null && features !== null ? (
         <div>
 
-          <SuggestChart energy={features.energy}  danceability={features.danceability}  acousticness={features.acousticness}  speechiness={features.speechiness}  liveness={features.liveness}  valence={features.valence} />
+          <ChartSuggestTrack energy={features.energy}  danceability={features.danceability}  acousticness={features.acousticness}  speechiness={features.speechiness}  liveness={features.liveness}  valence={features.valence} />
         </div>
       ) : (
         <p>Loading features...</p>

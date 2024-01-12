@@ -8,7 +8,7 @@ ChartJS.register(
     BarElement,
   )
 
-const SuggestChart = ({ energy, danceability, acousticness, speechiness, liveness, valence}) => {
+const ChartSuggestTrack = ({ energy, danceability, acousticness, speechiness, liveness, valence}) => {
     const data = {
         labels: ['energy', 'danceability','acousticness','speechiness','liveness','valence'],
         datasets: [
@@ -56,9 +56,9 @@ const SuggestChart = ({ energy, danceability, acousticness, speechiness, livenes
 
     return (
     <div>
-        <Bar data={data} options={options} className="suggestChart"/>
+        <Bar data={data} options={options} className="ChartSuggestTrack"/>
     </div>
     )
   };
 
-export default SuggestChart;
+export default ChartSuggestTrack;
